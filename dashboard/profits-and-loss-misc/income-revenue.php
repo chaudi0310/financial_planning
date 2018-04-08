@@ -12,7 +12,7 @@
 		<h2>Income</h2>
 		<table class="table table-condensed">
 		<thead>
-			<tr style="color:white; background-color: gray; border-top: 5px solid #0099cc;">
+			<tr style="background-color: gray; color: white; border-top: 5px solid black;">
 				<th>Revenue</th>
 				<th>Year1</th>
 				<th>Year2</th>
@@ -35,12 +35,12 @@
 			
 		 ?>
 			<tr>
-				<td class=""><?php echo round($product,2); ?></td>
-				<td class=""><?php echo round($year1,2); ?></td>
-				<td class=""><?php echo round($year2,2); ?></td>
-				<td class=""><?php echo round($year3,2); ?></td>
-				<td class=""><?php echo round($year4,2); ?></td>
-				<td class=""><?php echo round($year5,2); ?></td>
+				<td class=""><?php echo $product; ?></td>
+				<td class="">₱<?php echo number_format($year1,2); ?></td>
+				<td class="">₱<?php echo number_format($year2,2); ?></td>
+				<td class="">₱<?php echo number_format($year3,2); ?></td>
+				<td class="">₱<?php echo number_format($year4,2); ?></td>
+				<td class="">₱<?php echo number_format($year5,2); ?></td>
 			</tr>
 			<?php } 
 			$totalcost1 = mysqli_query($db, "SELECT SUM(year1) AS year1 FROM `income-revenue`");
@@ -71,10 +71,10 @@
 		</tbody>
 		<tfoot>
 		<th>Total Revenue</th>
-		<th><?php echo round($totalcostyear1,2); ?></th>
-		<th><?php echo round($totalcostyear2,2); ?></th>
-		<th><?php echo round($totalcostyear3,2); ?></th>
-		<th><?php echo round($totalcostyear4,2); ?></th>
-		<th><?php echo round($totalcostyear5,2); ?></th>
+		<th>₱<?php echo number_format($totalcostyear1,2); ?></th>
+		<th>₱<?php echo number_format($totalcostyear2,2); ?></th>
+		<th>₱<?php echo number_format($totalcostyear3,2); ?></th>
+		<th>₱<?php echo number_format($totalcostyear4,2); ?></th>
+		<th>₱<?php echo number_format($totalcostyear5,2); ?></th>
 		</tfoot>
 		</table>

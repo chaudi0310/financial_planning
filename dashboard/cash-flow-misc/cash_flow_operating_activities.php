@@ -60,7 +60,7 @@
 		<table class="table table-condensed">
 		<thead>
 			<tr style="background-color: gray; color: white; border-top: 5px solid black;">
-				<th>Operating activies <button type="button" class="btn btn-warning"><i class="fa fa-pencil"></i></button></th>
+				<th>Operating activies <?php if(!isset($_SESSION['readonly'])){ ?><a href="cash-flow-misc/cash_flow_operating_activities_edit.php" class="btn btn-warning"><i class="fa fa-pencil"></i></a><?php } ?></th>
 				<th>Year1</th>
 				<th>Year2</th>
 				<th>Year3</th>
@@ -73,59 +73,59 @@
 		<tbody>
 			<tr>
 				<td class="" >Net Income</td>
-				<td class="" ><?php echo round($netincomeyear1,2) ?></td>
-				<td class="" ><?php echo round($netincomeyear2,2) ?></td>
-				<td class="" ><?php echo round($netincomeyear3,2) ?></td>
-				<td class="" ><?php echo round($netincomeyear4,2) ?></td>
-				<td class="" ><?php echo round($netincomeyear5,2) ?></td>
-				<td class="" ><?php echo round($totalnetincome,2) ?></td>
+				<td class="" >₱<?php echo number_format($netincomeyear1,2) ?></td>
+				<td class="" >₱<?php echo number_format($netincomeyear2,2) ?></td>
+				<td class="" >₱<?php echo number_format($netincomeyear3,2) ?></td>
+				<td class="" >₱<?php echo number_format($netincomeyear4,2) ?></td>
+				<td class="" >₱<?php echo number_format($netincomeyear5,2) ?></td>
+				<td class="" >₱<?php echo number_format($totalnetincome,2) ?></td>
 			</tr>
 			<tr>
 				<td class="" >Depriciation</td>
-				<td class="" align=""><?php echo round($depreciationyear1,2) ?></td>
-				<td class="" align=""><?php echo round($depreciationyear2,2) ?></td>
-				<td class="" align=""><?php echo round($depreciationyear3,2) ?></td>
-				<td class="" align=""><?php echo round($depreciationyear4,2) ?></td>
-				<td class="" align=""><?php echo round($depreciationyear5,2) ?></td>
-				<td class="" align=""><?php echo round($totaldepreciation,2) ?></td>
+				<td class="" align="">₱<?php echo number_format($depreciationyear1,2) ?></td>
+				<td class="" align="">₱<?php echo number_format($depreciationyear2,2) ?></td>
+				<td class="" align="">₱<?php echo number_format($depreciationyear3,2) ?></td>
+				<td class="" align="">₱<?php echo number_format($depreciationyear4,2) ?></td>
+				<td class="" align="">₱<?php echo number_format($depreciationyear5,2) ?></td>
+				<td class="" align="">₱<?php echo number_format($totaldepreciation,2) ?></td>
 			</tr>
 			
 			<tr>
 				<td class="" >Amortization</td>
-				<td class="" align=""><?php echo round($amortizationvalue,2) ?></td>
-				<td class="" align=""><?php echo round($amortizationvalue,2) ?></td>
-				<td class="" align=""><?php echo round($amortizationvalue,2) ?></td>
-				<td class="" align=""><?php echo round($amortizationvalue,2) ?></td>
-				<td class="" align=""><?php echo round($amortizationvalue,2) ?></td>
-				<td class="" align=""><?php echo round($amortizationvalue,2) ?></td>
+				<td class="" align="">₱<?php echo number_format($amortizationvalue,2) ?></td>
+				<td class="" align="">₱<?php echo number_format($amortizationvalue,2) ?></td>
+				<td class="" align="">₱<?php echo number_format($amortizationvalue,2) ?></td>
+				<td class="" align="">₱<?php echo number_format($amortizationvalue,2) ?></td>
+				<td class="" align="">₱<?php echo number_format($amortizationvalue,2) ?></td>
+				<td class="" align="">₱<?php echo number_format($amortizationvalue,2) ?></td>
 			</tr>
 			<tr>
 				<td class="" >Other liabilities</td>
-				<td class="" align=""><?php echo round($otherliabilitiesvalue,2) ?></td>
-				<td class="" align=""><?php echo round($otherliabilitiesvalue,2) ?></td>
-				<td class="" align=""><?php echo round($otherliabilitiesvalue,2) ?></td>
-				<td class="" align=""><?php echo round($otherliabilitiesvalue,2) ?></td>
-				<td class="" align=""><?php echo round($otherliabilitiesvalue,2) ?></td>
-				<td class="" align=""><?php echo round($otherliabilitiesvalue,2) ?></td>
+				<td class="" align="">₱<?php echo number_format($otherliabilitiesvalue,2) ?></td>
+				<td class="" align="">₱<?php echo number_format($otherliabilitiesvalue,2) ?></td>
+				<td class="" align="">₱<?php echo number_format($otherliabilitiesvalue,2) ?></td>
+				<td class="" align="">₱<?php echo number_format($otherliabilitiesvalue,2) ?></td>
+				<td class="" align="">₱<?php echo number_format($otherliabilitiesvalue,2) ?></td>
+				<td class="" align="">₱<?php echo number_format($otherliabilitiesvalue,2) ?></td>
 			</tr>
 			<tr>
 				<td class="" >Other operating cash flow items</td>
-				<td class="" align=""><?php echo round($othercashflow,2) ?></td>
-				<td class="" align=""><?php echo round($othercashflow,2) ?></td>
-				<td class="" align=""><?php echo round($othercashflow,2) ?></td>
-				<td class="" align=""><?php echo round($othercashflow,2) ?></td>
-				<td class="" align=""><?php echo round($othercashflow,2) ?></td>
-				<td class="" align=""><?php echo round($othercashflow,2) ?></td>
+				<td class="" align="">₱<?php echo number_format($othercashflow,2) ?></td>
+				<td class="" align="">₱<?php echo number_format($othercashflow,2) ?></td>
+				<td class="" align="">₱<?php echo number_format($othercashflow,2) ?></td>
+				<td class="" align="">₱<?php echo number_format($othercashflow,2) ?></td>
+				<td class="" align="">₱<?php echo number_format($othercashflow,2) ?></td>
+				<td class="" align="">₱<?php echo number_format($othercashflow,2) ?></td>
 			</tr>
 			
 			<tr style="background-color: gray">
 				<td ><strong>Total operating activies</strong></td>
-				<td class="" align=""><?php echo round($operatingactivities_ty1,2) ?></td>
-				<td class="" align=""><?php echo round($operatingactivities_ty2,2) ?></td>
-				<td class="" align=""><?php echo round($operatingactivities_ty3,2) ?></td>
-				<td class="" align=""><?php echo round($operatingactivities_ty4,2) ?></td>
-				<td class="" align=""><?php echo round($operatingactivities_ty5,2) ?></td>
-				<td class="" align=""><?php echo round($operatingactivities_ttotals,2) ?></td>
+				<td class="" align="">₱<?php echo number_format($operatingactivities_ty1,2) ?></td>
+				<td class="" align="">₱<?php echo number_format($operatingactivities_ty2,2) ?></td>
+				<td class="" align="">₱<?php echo number_format($operatingactivities_ty3,2) ?></td>
+				<td class="" align="">₱<?php echo number_format($operatingactivities_ty4,2) ?></td>
+				<td class="" align="">₱<?php echo number_format($operatingactivities_ty5,2) ?></td>
+				<td class="" align="">₱<?php echo number_format($operatingactivities_ttotals,2) ?></td>
 			</tr>
 			
 		</tbody>

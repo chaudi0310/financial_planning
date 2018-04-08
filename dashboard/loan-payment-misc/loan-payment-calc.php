@@ -37,10 +37,10 @@
 			<tr>
 			
 				<td class=""><?php echo $month ; ?></td>
-				<td class=""><?php echo round($balance,2) ; ?></td>
-				<td class=""><?php echo round($scheduled_payment,2) ; ?></td>
-				<td class=""><?php echo round($principal,2) ; ?></td>
-				<td class=""><?php echo round($interest,2) ; ?></td>
+				<td class="">₱<?php echo number_format($balance,2) ; ?></td>
+				<td class="">₱<?php echo number_format($scheduled_payment,2) ; ?></td>
+				<td class="">₱<?php echo number_format($principal,2) ; ?></td>
+				<td class="">₱<?php echo number_format($interest,2) ; ?></td>
 				<?php
 				}
 				

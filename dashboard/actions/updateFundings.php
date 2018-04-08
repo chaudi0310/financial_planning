@@ -1,5 +1,18 @@
 <?php
 include '../../connection/dbConfig.php'; 
+session_start();
+//get term of loan
+$date = date('m-d-Y');
+date_default_timezone_set('Asia/Manila');
+$time = date(' h:i A');
+//get the old value of funding
+$getoldfunding = mysqli_query($db, "SELECT * FROM funding WHERE id = '1'");
+$countgetoldfunding = mysqli_num_rows($getoldfunding);
+if($countgetoldfunding > 0){
+	$row = mysqli_fetch_assoc($getoldfunding);
+	$old_loan_amount = $row['loan_amount'];
+	$old_interest_rate = $row['anual_interest_rate'];
+}
 //this code is for funding
 $loan_amount = $_POST['loan_amount'];
 $air = $_POST['anual_interest_rate'];
@@ -285,9 +298,24 @@ $month60principal = $scheduled_payment - $month60interest;
 
 
 //end of code for loan payment calculator
-
+	
 $update = mysqli_query($db, "UPDATE funding SET loan_amount = '$loan_amount', anual_interest_rate = '$air', monthly_rate = '$monthly_rate', payment = '$payment', total_amount_payable = '$total_amount_payable'");
 if($update == true){
+	if($loan_amount != $old_loan_amount && $air != $old_interest_rate){
+		$text = "Funding Update! Loan amount is changed from $old_loan_amount to $loan_amount and Annual Interest Rate is changed from $old_interest_rate to $air";
+		mysqli_query($db, "INSERT INTO `history`(`id`, `text`, `status`, `time`, `date`) VALUES(NULL, '$text', 'unread', '$time', '$date')");
+	} else if($loan_amount == $old_loan_amount && $air != $old_interest_rate){
+		$text = "Funding Update!  Annual Interest Rate is changed from $old_interest_rate to $air";
+		mysqli_query($db, "INSERT INTO `history`(`id`, `text`, `status`, `time`, `date`) VALUES(NULL, '$text', 'unread', '$time', '$date')");
+	} else if($loan_amount != $old_loan_amount && $air == $old_interest_rate){
+		$text = "Funding Update! Loan amount is changed from $old_loan_amount to $loan_amount";
+		mysqli_query($db, "INSERT INTO `history`(`id`, `text`, `status`, `time`, `date`) VALUES(NULL, '$text', 'unread', '$time', '$date')");
+	} else {
+		$text = "";
+	}
+	
+	
+	
 	$m1 = mysqli_query($db, "UPDATE `loan-payment-calculator` SET balance = '$month1balance', scheduled_payment = '$payment', principal = '$month1principal', interest = '$month1interest' WHERE month = '1'");
 	$m2 = mysqli_query($db, "UPDATE `loan-payment-calculator` SET balance = '$month2balance', scheduled_payment = '$payment', principal = '$month2principal', interest = '$month2interest' WHERE month = '2'");
 	$m3 = mysqli_query($db, "UPDATE `loan-payment-calculator` SET balance = '$month3balance', scheduled_payment = '$payment', principal = '$month3principal', interest = '$month3interest' WHERE month = '3'");
@@ -350,6 +378,8 @@ if($update == true){
 	$m60 = mysqli_query($db, "UPDATE `loan-payment-calculator` SET balance = '$month60balance', scheduled_payment = '$payment', principal = '$month60principal', interest = '$month60interest' WHERE month = '60'");
 	
 	if($m1 && $m2 && $m3 == true){
+		
+		$_SESSION['action'] = 'modelinputs';
 		//year1
 		$total = mysqli_query($db, "SELECT SUM(interest) AS total_sum FROM `loan-payment-calculator` WHERE id IN (1,2,3,4,5,6,7,8,9,10,11,12)");
 		$totalrow = mysqli_fetch_assoc($total);
@@ -375,7 +405,7 @@ if($update == true){
 	
 		<script>
 			alert("Data Updated Successfully");
-			//window.location = "../model-inputs.php";
+			window.location = "../cash-flow.php";
 		</script>
 	<?php
 	
@@ -383,7 +413,7 @@ if($update == true){
 		?>
 		<script>
 			alert("Update Failed");
-			//window.location = "../model-inputs.php";
+			window.location = "../cash-flow.php";
 		</script>
 		<?php
 		

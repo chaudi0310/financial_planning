@@ -89,7 +89,7 @@
 					?>
 					<script>
 						alert("Error updating table of totals");
-						window.location = "../index.php";
+						window.location = "../model-inputs.php";
 					</script>
 					<?php
 				}
@@ -97,7 +97,7 @@
 			?>
 			<script>
 				alert("Something went wrong");
-				window.location = "../index.php";
+				window.location = "../model-inputs.php";
 			</script>
 			<?php
 		}

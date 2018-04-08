@@ -88,10 +88,34 @@ if(isset($_SESSION['action'])){
             <span class="nav-link-text">Loan Payment Calculator</span>
           </a>
         </li>
+		<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Settings">
+          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseSettings" data-parent="#exampleAccordion">
+            <i class="fa fa-fw fa-wrench"></i>
+            <span class="nav-link-text">Settings</span>
+          </a>
+          <ul class="sidenav-second-level collapse" id="collapseSettings">
+            <li>
+              <a data-toggle="modal" href="#userModal">Change Username</a>
+			</li>
+            <li>
+              <a data-toggle="modal" href="#passModal">Change Password</a>
+            </li>
+			<li>
+              <a href="#">Backup Database</a>
+            </li>
+			<li>
+			  <a data-toggle="modal" href="#readModal">Read-only Mode <?php if(isset($_SESSION['readonly'])){ ?><i style="color: green"class="fa fa-circle"></i> <?php } ?></a>
+			</li>
+          </ul>
+        </li>
        
       </ul>
       
       <ul class="navbar-nav ml-auto">
+	  <li class="nav-item">
+          <a class="nav-link" data-toggle="modal" href="#historyModal" title="Recent Activity">
+            <i class="fa fa-fw fa-history"></i></a>
+       </li>
         <li class="nav-item">
           <a class="nav-link" href="logout.php">
             <i class="fa fa-fw fa-sign-out"></i>Logout</a>
@@ -99,6 +123,16 @@ if(isset($_SESSION['action'])){
       </ul>
     </div>
   </nav>
+  <?php include_once 'modal/password.php'; ?>
+  <?php include_once 'modal/username.php'; ?>
+  <?php include_once 'modal/historyModal.php'; ?>
+  <?php
+  if(!isset($_SESSION['readonly'])){
+	include_once 'modal/readModal.php'; 
+  } else {
+	include_once 'modal/unreadModal.php';
+  }
+  ?>
   <div class="content-wrapper">
     <div class="container-fluid">
       <!-- Breadcrumbs-->

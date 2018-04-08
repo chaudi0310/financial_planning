@@ -1,5 +1,5 @@
 <!--test-->
-		<?php 
+	<?php 
 	include '../connection/dbConfig.php';
 	$cas = mysqli_query($db, "SELECT * FROM current_assets WHERE id = '1'");
 	$countcash = mysqli_num_rows($cas);
@@ -47,7 +47,7 @@
 		$shortterm4 = $row['year4'];
 		$shortterm5 = $row['year5'];
 	}
-		?>
+	?>
 	<!--stop test -->
 	
 	
@@ -55,70 +55,69 @@
 		<table class="table table-condensed">
 		<thead>
 			<tr style="background-color: gray; color: white; border-top: 5px solid black;">
-				<th>Current Assets <button class="btn btn-warning"><i class="fa fa-pencil"></i></button></th>
+				<th>Current Assets <?php if(!isset($_SESSION['readonly'])){ ?><a href="balance-sheet-misc/current_assets_edit.php" class="btn btn-warning"><i class="fa fa-pencil"></i></a><?php } ?></th>
 				<th>Initial Balance</th>
 				<th>Year1</th>
 				<th>Year2</th>
 				<th>Year3</th>
 				<th>Year4</th>
 				<th>Year5</th>
-				
 			</tr>
 		</thead>
 		<tbody>
 			<tr>
 				<td class="" >Cash and short-term investments</td>
-				<td class="" align="center"><?php echo round($cash,2)?></td>
-				<td class="" align="center"><?php echo round($shortterm1,2) ?></td>
-				<td class="" align="center"><?php echo round($shortterm2,2) ?></td>
-				<td class="" align="center"><?php echo round($shortterm3,2) ?></td>
-				<td class="" align="center"><?php echo round($shortterm4,2) ?></td>
-				<td class="" align="center"><?php echo round($shortterm5,2) ?></td>
+				<td class="" align="center">₱<?php echo number_format($cash,2)?></td>
+				<td class="" align="center">₱<?php echo number_format($shortterm1,2) ?></td>
+				<td class="" align="center">₱<?php echo number_format($shortterm2,2) ?></td>
+				<td class="" align="center">₱<?php echo number_format($shortterm3,2) ?></td>
+				<td class="" align="center">₱<?php echo number_format($shortterm4,2) ?></td>
+				<td class="" align="center">₱<?php echo number_format($shortterm5,2) ?></td>
 			</tr>
 			<tr>
 				<td class="" >Accounts receivable</td>
-				<td class="" align="center"><?php echo round($receive,2)?></td>
-				<td class="" align="center"><?php echo round($receive,2)?></td>
-				<td class="" align="center"><?php echo round($receive,2)?></td>
-				<td class="" align="center"><?php echo round($receive,2)?></td>
-				<td class="" align="center"><?php echo round($receive,2)?></td>
-				<td class="" align="center"><?php echo round($receive,2)?></td>
+				<td class="" align="center">₱<?php echo number_format($receive,2)?></td>
+				<td class="" align="center">₱<?php echo number_format($receive,2)?></td>
+				<td class="" align="center">₱<?php echo number_format($receive,2)?></td>
+				<td class="" align="center">₱<?php echo number_format($receive,2)?></td>
+				<td class="" align="center">₱<?php echo number_format($receive,2)?></td>
+				<td class="" align="center">₱<?php echo number_format($receive,2)?></td>
 			</tr>
 			<tr>
 				<td class="">Total Inventory</td>
-				<td class="" align="center"><?php echo round($inventory,2)?></td>
-				<td class="" align="center"><?php echo round($inventory,2)?></td>
-				<td class="" align="center"><?php echo round($inventory,2)?></td>
-				<td class="" align="center"><?php echo round($inventory,2)?></td>
-				<td class="" align="center"><?php echo round($inventory,2)?></td>
-				<td class="" align="center"><?php echo round($inventory,2)?></td>
+				<td class="" align="center">₱<?php echo number_format($inventory,2)?></td>
+				<td class="" align="center">₱<?php echo number_format($inventory,2)?></td>
+				<td class="" align="center">₱<?php echo number_format($inventory,2)?></td>
+				<td class="" align="center">₱<?php echo number_format($inventory,2)?></td>
+				<td class="" align="center">₱<?php echo number_format($inventory,2)?></td>
+				<td class="" align="center">₱<?php echo number_format($inventory,2)?></td>
 			</tr>
 			<tr>
 				<td class="">Prepaid expenses</td>
-				<td class="" align="center"><?php echo round($prepaid,2)?></td>
-				<td class="" align="center"><?php echo round($prepaid,2)?></td>
-				<td class="" align="center"><?php echo round($prepaid,2)?></td>
-				<td class="" align="center"><?php echo round($prepaid,2)?></td>
-				<td class="" align="center"><?php echo round($prepaid,2)?></td>
-				<td class="" align="center"><?php echo round($prepaid,2)?></td>
+				<td class="" align="center">₱<?php echo number_format($prepaid,2)?></td>
+				<td class="" align="center">₱<?php echo number_format($prepaid,2)?></td>
+				<td class="" align="center">₱<?php echo number_format($prepaid,2)?></td>
+				<td class="" align="center">₱<?php echo number_format($prepaid,2)?></td>
+				<td class="" align="center">₱<?php echo number_format($prepaid,2)?></td>
+				<td class="" align="center">₱<?php echo number_format($prepaid,2)?></td>
 			</tr>
 			<tr>
 				<td class="" >Deferred income tax</td>
-				<td class="" align="center"><?php echo round($incometax,2)?></td>
-				<td class="" align="center"><?php echo round($incometax,2)?></td>
-				<td class="" align="center"><?php echo round($incometax,2)?></td>
-				<td class="" align="center"><?php echo round($incometax,2)?></td>
-				<td class="" align="center"><?php echo round($incometax,2)?></td>
-				<td class="" align="center"><?php echo round($incometax,2)?></td>
+				<td class="" align="center">₱<?php echo number_format($incometax,2)?></td>
+				<td class="" align="center">₱<?php echo number_format($incometax,2)?></td>
+				<td class="" align="center">₱<?php echo number_format($incometax,2)?></td>
+				<td class="" align="center">₱<?php echo number_format($incometax,2)?></td>
+				<td class="" align="center">₱<?php echo number_format($incometax,2)?></td>
+				<td class="" align="center">₱<?php echo number_format($incometax,2)?></td>
 			</tr>
 			<tr>
 				<td class="">Other current assets</td>
-				<td class="" align="center"><?php echo round($otherassets,2)?></td>
-				<td class="" align="center"><?php echo round($otherassets,2)?></td>
-				<td class="" align="center"><?php echo round($otherassets,2)?></td>
-				<td class="" align="center"><?php echo round($otherassets,2)?></td>
-				<td class="" align="center"><?php echo round($otherassets,2)?></td>
-				<td class="" align="center"><?php echo round($otherassets,2)?></td>
+				<td class="" align="center">₱<?php echo number_format($otherassets,2)?></td>
+				<td class="" align="center">₱<?php echo number_format($otherassets,2)?></td>
+				<td class="" align="center">₱<?php echo number_format($otherassets,2)?></td>
+				<td class="" align="center">₱<?php echo number_format($otherassets,2)?></td>
+				<td class="" align="center">₱<?php echo number_format($otherassets,2)?></td>
+				<td class="" align="center">₱<?php echo number_format($otherassets,2)?></td>
 			</tr>
 			<?php
 			$currentini = $cash+$inventory+$receive+$prepaid+$incometax+$otherassets;
@@ -130,12 +129,12 @@
 			?>
 			<tr style="background-color: gray">
 				<td ><strong>Total current assets</strong></td>
-				<td class="" align="center"><?php echo round($cash+$inventory+$receive+$prepaid+$incometax+$otherassets,2) ?></td>
-				<td class="" align="center"><?php echo round($inventory+$receive+$prepaid+$incometax+$otherassets+$shortterm1,2) ?></td>
-				<td class="" align="center"><?php echo round($inventory+$receive+$prepaid+$incometax+$otherassets+$shortterm2,2) ?></td>
-				<td class="" align="center"><?php echo round($inventory+$receive+$prepaid+$incometax+$otherassets+$shortterm3,2) ?></td>
-				<td class="" align="center"><?php echo round($inventory+$receive+$prepaid+$incometax+$otherassets+$shortterm4,2) ?></td>
-				<td class="" align="center"><?php echo round($inventory+$receive+$prepaid+$incometax+$otherassets+$shortterm5,2) ?></td>
+				<td class="" align="center">₱<?php echo number_format($cash+$inventory+$receive+$prepaid+$incometax+$otherassets,2) ?></td>
+				<td class="" align="center">₱<?php echo number_format($inventory+$receive+$prepaid+$incometax+$otherassets+$shortterm1,2) ?></td>
+				<td class="" align="center">₱<?php echo number_format($inventory+$receive+$prepaid+$incometax+$otherassets+$shortterm2,2) ?></td>
+				<td class="" align="center">₱<?php echo number_format($inventory+$receive+$prepaid+$incometax+$otherassets+$shortterm3,2) ?></td>
+				<td class="" align="center">₱<?php echo number_format($inventory+$receive+$prepaid+$incometax+$otherassets+$shortterm4,2) ?></td>
+				<td class="" align="center">₱<?php echo number_format($inventory+$receive+$prepaid+$incometax+$otherassets+$shortterm5,2) ?></td>
 			</tr>
 			
 		</tbody>

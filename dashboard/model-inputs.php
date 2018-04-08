@@ -1,6 +1,4 @@
-<?php 
-include '../connection/dbConfig.php';
-	
+<?php
 session_start();
 if(isset($_SESSION['username'])){
 	
@@ -11,8 +9,8 @@ if(isset($_SESSION['username'])){
 	</script>
 	<?php
 }
-?>
 
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,7 +20,7 @@ if(isset($_SESSION['username'])){
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-  <title>Model Inputs - Financial Planning System</title>
+  <title>Profits and Loss - Financial Planning System</title>
   <!-- Bootstrap core CSS-->
   <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!-- Custom fonts for this template-->
@@ -42,7 +40,7 @@ if(isset($_SESSION['username'])){
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
-	  <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Model Inputs">
+	  <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
           <a class="nav-link" href="index.php">
             <i class="fa fa-fw fa-dashboard"></i>
             <span class="nav-link-text">Dashboard</span>
@@ -81,17 +79,51 @@ if(isset($_SESSION['username'])){
             <span class="nav-link-text">Loan Payment Calculator</span>
           </a>
         </li>
+		<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Settings">
+          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseSettings" data-parent="#exampleAccordion">
+            <i class="fa fa-fw fa-wrench"></i>
+            <span class="nav-link-text">Settings</span>
+          </a>
+          <ul class="sidenav-second-level collapse" id="collapseSettings">
+            <li>
+              <a data-toggle="modal" href="#userModal">Change Username</a>
+			</li>
+            <li>
+              <a data-toggle="modal" href="#passModal">Change Password</a>
+            </li>
+			<li>
+              <a href="#">Backup Database</a>
+            </li>
+			<li>
+			  <a data-toggle="modal" href="#readModal">Read-only Mode <?php if(isset($_SESSION['readonly'])){ ?><i style="color: green"class="fa fa-circle"></i> <?php } ?></a>
+			</li>
+          </ul>
+        </li>
        
       </ul>
       
       <ul class="navbar-nav ml-auto">
-         <li class="nav-item">
+	  <li class="nav-item">
+          <a class="nav-link" data-toggle="modal" href="#historyModal" title="Recent Activity">
+            <i class="fa fa-fw fa-history"></i></a>
+       </li>
+        <li class="nav-item">
           <a class="nav-link" href="logout.php">
             <i class="fa fa-fw fa-sign-out"></i>Logout</a>
         </li>
       </ul>
     </div>
   </nav>
+  <?php include_once 'modal/password.php'; ?>
+  <?php include_once 'modal/username.php'; ?>
+  <?php include_once 'modal/historyModal.php'; ?>
+  <?php
+  if(!isset($_SESSION['readonly'])){
+	include_once 'modal/readModal.php'; 
+  } else {
+	include_once 'modal/unreadModal.php';
+  }
+  ?>
   <div class="content-wrapper">
     <div class="container-fluid">
       <!-- Breadcrumbs-->
@@ -175,8 +207,10 @@ if(isset($_SESSION['username'])){
 	$(document).on("click", ".update-funding", function(){
 			var loanamount = $(this).data('loan-amount');
 			var anual_interest = $(this).data('anual-loan');
+			var loanterm = $(this).data('loan-term');
 			$(".modal-body #loan-amount").val(loanamount);
 			$(".modal-body #anual-interest").val(anual_interest);
+			$(".modal-body #loan_term").val(loanterm);
 });
 	</script>
 	<!--this script is for model-input inflation rate-->
@@ -202,4 +236,5 @@ if(isset($_SESSION['username'])){
   </div>
 </body>
 
+	
 </html>

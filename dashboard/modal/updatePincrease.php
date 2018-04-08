@@ -2,7 +2,7 @@
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h4 class="modal-title">Update Inflation</h4>
+				<h4 class="modal-title">Update Product Price Increase</h4>
 			</div>
 			<div class="modal-body">
 				<div class="row" >

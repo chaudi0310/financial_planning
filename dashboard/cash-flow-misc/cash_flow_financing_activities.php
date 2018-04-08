@@ -143,8 +143,8 @@
 		
 		<table class="table table-condensed">
 		<thead>
-			<tr style="background-color: gray; color: white; border-top: 5px solid black;">
-				<th>Financing activities <button type="button" class="btn btn-warning"><i class="fa fa-pencil"></i></button></th>
+			<tr style="">
+				<th>Financing activities <?php if(!isset($_SESSION['readonly'])){ ?><a href="cash-flow-misc/cash_flow_financing_activities_edit.php" class="btn btn-warning"><i class="fa fa-pencil"></i></a><?php } ?></th>
 				<th>Year1</th>
 				<th>Year2</th>
 				<th>Year3</th>
@@ -157,58 +157,58 @@
 		<tbody>
 			<tr>
 				<td class="" >Long term debt/financing</td>
-				<td class="" align="" style="color: <?php echo $longtermcolor1 ?>;"><?php echo round($longtermdebtfinancing,2) ?></td>
-				<td class="" align="" style="color: <?php echo $longtermcolor2 ?>;"><?php echo round($longtermdebtfinancing1,2) ?></td>
-				<td class="" align="" style="color: <?php echo $longtermcolor3 ?>;"><?php echo round($longtermdebtfinancing2,2) ?></td>
-				<td class="" align="" style="color: <?php echo $longtermcolor4 ?>;"><?php echo round($longtermdebtfinancing3,2) ?></td>
-				<td class="" align="" style="color: <?php echo $longtermcolor5 ?>;"><?php echo round($longtermdebtfinancing4,2) ?></td>
-				<td class="" align="" style="color: <?php echo $longtermcolor6 ?>;"><?php echo round($totallongtermdebt,2) ?></td>
+				<td class="" align="" style="color: <?php echo $longtermcolor1 ?>;">₱<?php echo number_format($longtermdebtfinancing,2) ?></td>
+				<td class="" align="" style="color: <?php echo $longtermcolor2 ?>;">₱<?php echo number_format($longtermdebtfinancing1,2) ?></td>
+				<td class="" align="" style="color: <?php echo $longtermcolor3 ?>;">₱<?php echo number_format($longtermdebtfinancing2,2) ?></td>
+				<td class="" align="" style="color: <?php echo $longtermcolor4 ?>;">₱<?php echo number_format($longtermdebtfinancing3,2) ?></td>
+				<td class="" align="" style="color: <?php echo $longtermcolor5 ?>;">₱<?php echo number_format($longtermdebtfinancing4,2) ?></td>
+				<td class="" align="" style="color: <?php echo $longtermcolor6 ?>;">₱<?php echo number_format($totallongtermdebt,2) ?></td>
 			</tr>
 			<tr>
 				<td>Preferred stock</td>
-				<td><?php echo round($preferredstockvalue, 2) ?></td>
-				<td><?php echo round($preferredstockvalue, 2) ?></td>
-				<td><?php echo round($preferredstockvalue, 2) ?></td>
-				<td><?php echo round($preferredstockvalue, 2) ?></td>
-				<td><?php echo round($preferredstockvalue, 2) ?></td>
-				<td><?php echo round($preferredstocktotalvalue, 2) ?></td>
+				<td>₱<?php echo number_format($preferredstockvalue, 2) ?></td>
+				<td>₱<?php echo number_format($preferredstockvalue, 2) ?></td>
+				<td>₱<?php echo number_format($preferredstockvalue, 2) ?></td>
+				<td>₱<?php echo number_format($preferredstockvalue, 2) ?></td>
+				<td>₱<?php echo number_format($preferredstockvalue, 2) ?></td>
+				<td>₱<?php echo number_format($preferredstocktotalvalue, 2) ?></td>
 			</tr>
 			<tr>
 				<td>Total cash dividends paid</td>
-				<td><?php echo round($totalcashvalue,2) ?></td>
-				<td><?php echo round($totalcashvalue,2) ?></td>
-				<td><?php echo round($totalcashvalue,2) ?></td>
-				<td><?php echo round($totalcashvalue,2) ?></td>
-				<td><?php echo round($totalcashvalue,2) ?></td>
-				<td><?php echo round($totalcashtotalvalue,2) ?></td>
+				<td>₱<?php echo number_format($totalcashvalue,2) ?></td>
+				<td>₱<?php echo number_format($totalcashvalue,2) ?></td>
+				<td>₱<?php echo number_format($totalcashvalue,2) ?></td>
+				<td>₱<?php echo number_format($totalcashvalue,2) ?></td>
+				<td>₱<?php echo number_format($totalcashvalue,2) ?></td>
+				<td>₱<?php echo number_format($totalcashtotalvalue,2) ?></td>
 			</tr>
 			<tr>
 				<td>Common stock</td>
-				<td><?php echo round($commonstockvalue,2) ?></td>
-				<td><?php echo round($commonstockvalue,2) ?></td>
-				<td><?php echo round($commonstockvalue,2) ?></td>
-				<td><?php echo round($commonstockvalue,2) ?></td>
-				<td><?php echo round($commonstockvalue,2) ?></td>
-				<td><?php echo round($commonstocktotalvalue,2) ?></td>
+				<td>₱<?php echo number_format($commonstockvalue,2) ?></td>
+				<td>₱<?php echo number_format($commonstockvalue,2) ?></td>
+				<td>₱<?php echo number_format($commonstockvalue,2) ?></td>
+				<td>₱<?php echo number_format($commonstockvalue,2) ?></td>
+				<td>₱<?php echo number_format($commonstockvalue,2) ?></td>
+				<td>₱<?php echo number_format($commonstocktotalvalue,2) ?></td>
 			</tr>
 			<tr>
 				<td>Other financing cahs flow items</td>
-				<td><?php echo round($financingcashflowvalue,2) ?></td>
-				<td><?php echo round($financingcashflowvalue,2) ?></td>
-				<td><?php echo round($financingcashflowvalue,2) ?></td>
-				<td><?php echo round($financingcashflowvalue,2) ?></td>
-				<td><?php echo round($financingcashflowvalue,2) ?></td>
-				<td><?php echo round($financingcashflowtotalvalue,2) ?></td>
+				<td>₱<?php echo number_format($financingcashflowvalue,2) ?></td>
+				<td>₱<?php echo number_format($financingcashflowvalue,2) ?></td>
+				<td>₱<?php echo number_format($financingcashflowvalue,2) ?></td>
+				<td>₱<?php echo number_format($financingcashflowvalue,2) ?></td>
+				<td>₱<?php echo number_format($financingcashflowvalue,2) ?></td>
+				<td>₱<?php echo number_format($financingcashflowtotalvalue,2) ?></td>
 			</tr>
 			
 			<tr style="background-color: gray">
 				<td ><strong>Total financing activities</strong></td>
-				<td class="" align="" style="color: <?php echo $totalfinancingcolor1 ?>"><?php echo round($totalfinacningactivities1,2) ?></td>
-				<td class="" align="" style="color: <?php echo $totalfinancingcolor2 ?>"><?php echo round($totalfinacningactivities2,2) ?></td>
-				<td class="" align="" style="color: <?php echo $totalfinancingcolor3 ?>"><?php echo round($totalfinacningactivities3,2) ?></td>
-				<td class="" align="" style="color: <?php echo $totalfinancingcolor4 ?>"><?php echo round($totalfinacningactivities4,2) ?></td>
-				<td class="" align="" style="color: <?php echo $totalfinancingcolor5 ?>"><?php echo round($totalfinacningactivities5,2) ?></td>
-				<td class="" align="" style="color: <?php echo $totalfinancingcolor6 ?>"><?php echo round($totalfinancingactivitiestotal,2) ?></td>
+				<td class="" align="" style="color: <?php echo $totalfinancingcolor1 ?>">₱<?php echo number_format($totalfinacningactivities1,2) ?></td>
+				<td class="" align="" style="color: <?php echo $totalfinancingcolor2 ?>">₱<?php echo number_format($totalfinacningactivities2,2) ?></td>
+				<td class="" align="" style="color: <?php echo $totalfinancingcolor3 ?>">₱<?php echo number_format($totalfinacningactivities3,2) ?></td>
+				<td class="" align="" style="color: <?php echo $totalfinancingcolor4 ?>">₱<?php echo number_format($totalfinacningactivities4,2) ?></td>
+				<td class="" align="" style="color: <?php echo $totalfinancingcolor5 ?>">₱<?php echo number_format($totalfinacningactivities5,2) ?></td>
+				<td class="" align="" style="color: <?php echo $totalfinancingcolor6 ?>">₱<?php echo number_format($totalfinancingactivitiestotal,2) ?></td>
 			</tr>
 			
 		</tbody>

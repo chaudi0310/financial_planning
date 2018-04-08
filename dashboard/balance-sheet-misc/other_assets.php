@@ -35,7 +35,7 @@
 		<table class="table table-condensed">
 		<thead>
 			<tr style="background-color: gray; color: white; border-top: 5px solid black;">
-				<th>Other Assets <button class="btn btn-warning"><i class="fa fa-pencil"></i></button></th>
+				<th>Other Assets <?php if(!isset($_SESSION['readonly'])){ ?><a class="btn btn-warning" href="balance-sheet-misc/other_assets_edit.php"><i class="fa fa-pencil"></i></a><?php } ?></th>
 				<th>Initial Balance</th>
 				<th>Year1</th>
 				<th>Year2</th>
@@ -48,51 +48,51 @@
 		<tbody>
 			<tr>
 				<td class="">Goodwill</td>
-				<td class="" align="center"><?php echo $goodwill ?></td>
-				<td class="" align="center"><?php echo $goodwill ?></td>
-				<td class="" align="center"><?php echo $goodwill ?></td>
-				<td class="" align="center"><?php echo $goodwill ?></td>
-				<td class="" align="center"><?php echo $goodwill ?></td>
-				<td class="" align="center"><?php echo $goodwill ?></td>
+				<td class="" align="center">₱<?php echo number_format($goodwill,2) ?></td>
+				<td class="" align="center">₱<?php echo number_format($goodwill,2) ?></td>
+				<td class="" align="center">₱<?php echo number_format($goodwill,2) ?></td>
+				<td class="" align="center">₱<?php echo number_format($goodwill,2) ?></td>
+				<td class="" align="center">₱<?php echo number_format($goodwill,2) ?></td>
+				<td class="" align="center">₱<?php echo number_format($goodwill,2) ?></td>
 			</tr>
 			<tr>
 				<td class="">Long-term investments</td>
-				<td class="" align="center"><?php echo $longterm_investments ?></td>
-				<td class="" align="center"><?php echo $longterm_investments ?></td>
-				<td class="" align="center"><?php echo $longterm_investments ?></td>
-				<td class="" align="center"><?php echo $longterm_investments ?></td>
-				<td class="" align="center"><?php echo $longterm_investments ?></td>
-				<td class="" align="center"><?php echo $longterm_investments ?></td>
+				<td class="" align="center">₱<?php echo number_format($longterm_investments,2) ?></td>
+				<td class="" align="center">₱<?php echo number_format($longterm_investments,2) ?></td>
+				<td class="" align="center">₱<?php echo number_format($longterm_investments,2) ?></td>
+				<td class="" align="center">₱<?php echo number_format($longterm_investments,2) ?></td>
+				<td class="" align="center">₱<?php echo number_format($longterm_investments,2) ?></td>
+				<td class="" align="center">₱<?php echo number_format($longterm_investments,2) ?></td>
 			</tr>
 			<tr>
 				<td class="">Deposits</td>
-				<td class="" align="center"><?php echo $deposits ?></td>
-				<td class="" align="center"><?php echo $deposits ?></td>
-				<td class="" align="center"><?php echo $deposits ?></td>
-				<td class="" align="center"><?php echo $deposits ?></td>
-				<td class="" align="center"><?php echo $deposits ?></td>
-				<td class="" align="center"><?php echo $deposits ?></td>
+				<td class="" align="center">₱<?php echo number_format($deposits,2) ?></td>
+				<td class="" align="center">₱<?php echo number_format($deposits,2) ?></td>
+				<td class="" align="center">₱<?php echo number_format($deposits,2) ?></td>
+				<td class="" align="center">₱<?php echo number_format($deposits,2) ?></td>
+				<td class="" align="center">₱<?php echo number_format($deposits,2) ?></td>
+				<td class="" align="center">₱<?php echo number_format($deposits,2) ?></td>
 			</tr>
 			<tr>
 				<td class="">Other long-term assets</td>
-				<td class="" align="center"><?php echo $longterm_assets ?></td>
-				<td class="" align="center"><?php echo $longterm_assets ?></td>
-				<td class="" align="center"><?php echo $longterm_assets ?></td>
-				<td class="" align="center"><?php echo $longterm_assets ?></td>
-				<td class="" align="center"><?php echo $longterm_assets ?></td>
-				<td class="" align="center"><?php echo $longterm_assets ?></td>
+				<td class="" align="center">₱<?php echo number_format($longterm_assets,2) ?></td>
+				<td class="" align="center">₱<?php echo number_format($longterm_assets,2) ?></td>
+				<td class="" align="center">₱<?php echo number_format($longterm_assets,2) ?></td>
+				<td class="" align="center">₱<?php echo number_format($longterm_assets,2) ?></td>
+				<td class="" align="center">₱<?php echo number_format($longterm_assets,2) ?></td>
+				<td class="" align="center">₱<?php echo number_format($longterm_assets,2) ?></td>
 			</tr>
 			<?php
 				$otherassets = $goodwill + $longterm_investments + $deposits + $longterm_assets;
 			?>
 			<tr style="background-color: gray;">
 				<td class=""><strong>Total other assets</strong></td>
-				<td class="" align="center"><?php echo $otherassets ?></td>
-				<td class="" align="center"><?php echo $otherassets ?></td>
-				<td class="" align="center"><?php echo $otherassets ?></td>
-				<td class="" align="center"><?php echo $otherassets ?></td>
-				<td class="" align="center"><?php echo $otherassets ?></td>
-				<td class="" align="center"><?php echo $otherassets ?></td>
+				<td class="" align="center">₱<?php echo number_format($otherassets,2) ?></td>
+				<td class="" align="center">₱<?php echo number_format($otherassets,2) ?></td>
+				<td class="" align="center">₱<?php echo number_format($otherassets,2) ?></td>
+				<td class="" align="center">₱<?php echo number_format($otherassets,2) ?></td>
+				<td class="" align="center">₱<?php echo number_format($otherassets,2) ?></td>
+				<td class="" align="center">₱<?php echo number_format($otherassets,2) ?></td>
 			</tr>
 			
 		</tbody>
@@ -111,12 +111,12 @@
 			</tr>
 			</tbody><tbody>
 				<tr align="center">
-					<td><?php echo round($otherassets + $pandeinitial + $currentini,2); ?></td>
-					<td><?php echo round($otherassets + $pande1 + $current1,2); ?></td>
-					<td><?php echo round($otherassets + $pande2 + $current2,2); ?></td>
-					<td><?php echo round($otherassets + $pande3 + $current3,2); ?></td>
-					<td><?php echo round($otherassets + $pande4 + $current4,2); ?></td>
-					<td><?php echo round($otherassets + $pande5 + $current5,2); ?></td>
+					<td>₱<?php echo number_format($otherassets + $pandeinitial + $currentini,2); ?></td>
+					<td>₱<?php echo number_format($otherassets + $pande1 + $current1,2); ?></td>
+					<td>₱<?php echo number_format($otherassets + $pande2 + $current2,2); ?></td>
+					<td>₱<?php echo number_format($otherassets + $pande3 + $current3,2); ?></td>
+					<td>₱<?php echo number_format($otherassets + $pande4 + $current4,2); ?></td>
+					<td>₱<?php echo number_format($otherassets + $pande5 + $current5,2); ?></td>
 				</tr>
 			</tbody>
 		</table>

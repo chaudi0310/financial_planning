@@ -2,7 +2,7 @@
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h4 class="modal-title">Add Product</h4>
+				<h4 class="modal-title">Update Funding</h4>
 			</div>
 			<div class="modal-body">
 				<div class="row" >
@@ -11,14 +11,20 @@
 						Loan Amount
 					</div>
 					<div class="col-md-8">
-						<input class="form-control" id="loan-amount" type="text" name="loan_amount"">
+						<input class="form-control" id="loan-amount" type="number" name="loan_amount">
 					</div>
 					<br><br>
 					<div class="col-md-4" style="margin-top:5px;">
 						Anual Interest Rate (%)
 					</div>
 					<div class="col-md-8">
-						<input class="form-control" id="anual-interest" type="text" name="anual_interest_rate" >
+						<input class="form-control" id="anual-interest" type="number" name="anual_interest_rate" >
+					</div>
+					<div class="col-md-4" style="margin-top:5px;">
+						Term of Loan (months)
+					</div>
+					<div class="col-md-8">
+						<input class="form-control" id="loan_term" type="number" name="loan_term" >
 					</div>
 					<br><br>
 					

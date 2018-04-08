@@ -37,7 +37,7 @@
 			
 				<td class=""><?php echo $pname;?></td>
 				<td class=""><?php echo $gross; ?>%</td>
-				<td class=""><?php echo $anual_cost; ?></td>
+				<td class="">₱<?php echo number_format($anual_cost,2); ?></td>
 				
 				<?php
 				}
@@ -63,7 +63,7 @@
 					Total Cost of Goods sold
 				</th>
 				<th></th>
-				 <th><?php if($countdbquery > 0) {echo $fetchtotal['total_cog']; }?></th> 
+				 <th>₱<?php if($countdbquery > 0) {echo number_format($fetchtotal['total_cog'],2); }?></th> 
 			</tr>
 		</thead>
 		</table>

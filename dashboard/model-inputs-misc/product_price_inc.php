@@ -9,9 +9,9 @@
 	
 	
 		<table class="table table-condensed">
-		<thead style="background-color: blue; color:white">
+		<thead style="background-color: gray; color:white">
 			<tr>
-				<th>PRODUCT PRICE INCREASE <button class="btn btn-warning update-pincrease" type="button" data-price-rate="<?php echo $row['anual_price_increase']; ?>" data-toggle="modal" data-target="#updatePincrease"><i class="fa fa-pencil"></i></button></th>
+				<th>PRODUCT PRICE INCREASE <?php if(!isset($_SESSION['readonly'])){ ?><button class="btn btn-warning update-pincrease" type="button" data-price-rate="<?php echo $row['anual_price_increase']; ?>" data-toggle="modal" data-target="#updatePincrease"><i class="fa fa-pencil"></i></button><?php } ?></th>
 				<?php include_once 'modal/updatePincrease.php'; ?>
 				<th></th>
 				<th></th>

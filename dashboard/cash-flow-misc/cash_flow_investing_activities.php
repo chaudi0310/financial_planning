@@ -85,7 +85,7 @@
 		<table class="table table-condensed">
 		<thead>
 			<tr style="background-color: gray; color: white; border-top: 5px solid black;">
-				<th>Investing activities <button type="button" class="btn btn-warning"><i class="fa fa-pencil"></i></button></th>
+				<th>Investing activities <?php if(!isset($_SESSION['readonly'])){ ?><a href="cash-flow-misc/cash_flow_investing_activities_edit.php" class="btn btn-warning"><i class="fa fa-pencil"></i></a><?php } ?></th>
 				<th>Year1</th>
 				<th>Year2</th>
 				<th>Year3</th>
@@ -98,40 +98,40 @@
 		<tbody>
 			<tr>
 				<td class="" >Acquisition of business</td>
-				<td class="" align="" ><?php echo round($acqyear1,2) ?></td>
-				<td class="" align=""><?php echo round($acqyear2,2) ?></td>
-				<td class="" align=""><?php echo round($acqyear3,2) ?></td>
-				<td class="" align=""><?php echo round($acqyear4,2) ?></td>
-				<td class="" align=""><?php echo round($acqyear5,2) ?></td>
-				<td class="" align=""><?php echo round($totalacq,2) ?></td>
+				<td class="" align="" >₱<?php echo number_format($acqyear1,2) ?></td>
+				<td class="" align="">₱<?php echo number_format($acqyear2,2) ?></td>
+				<td class="" align="">₱<?php echo number_format($acqyear3,2) ?></td>
+				<td class="" align="">₱<?php echo number_format($acqyear4,2) ?></td>
+				<td class="" align="">₱<?php echo number_format($acqyear5,2) ?></td>
+				<td class="" align="">₱<?php echo number_format($totalacq,2) ?></td>
 			</tr>
 			<tr>
 				<td class="" >Sale of fixed assets</td>
-				<td class="" align="" style="color:<?php echo $color1 ?>;"><?php echo round($fixedassetyear1,2) ?></td>
-				<td class="" align="" style="color:<?php echo $color2 ?>;"><?php echo round($fixedassetyear2,2) ?></td>
-				<td class="" align="" style="color:<?php echo $color3 ?>;"><?php echo round($fixedassetyear3,2) ?></td>
-				<td class="" align="" style="color:<?php echo $color4 ?>;"><?php echo round($fixedassetyear4,2) ?></td>
-				<td class="" align="" style="color:<?php echo $color5 ?>;"><?php echo round($fixedassetyear5,2) ?></td>
-				<td class="" align="" style="color:<?php echo $color6 ?>;"><?php echo round($totalfixedasset,2) ?></td>
+				<td class="" align="" style="color:<?php echo $color1 ?>;">₱<?php echo number_format($fixedassetyear1,2) ?></td>
+				<td class="" align="" style="color:<?php echo $color2 ?>;">₱<?php echo number_format($fixedassetyear2,2) ?></td>
+				<td class="" align="" style="color:<?php echo $color3 ?>;">₱<?php echo number_format($fixedassetyear3,2) ?></td>
+				<td class="" align="" style="color:<?php echo $color4 ?>;">₱<?php echo number_format($fixedassetyear4,2) ?></td>
+				<td class="" align="" style="color:<?php echo $color5 ?>;">₱<?php echo number_format($fixedassetyear5,2) ?></td>
+				<td class="" align="" style="color:<?php echo $color6 ?>;">₱<?php echo number_format($totalfixedasset,2) ?></td>
 			</tr>
 			<tr>
 				<td class="" >Other investing cash flow items</td>
-				<td class="" align=""><?php echo round($otherinvestyear1,2) ?></td>
-				<td class="" align=""><?php echo round($otherinvestyear2,2) ?></td>
-				<td class="" align=""><?php echo round($otherinvestyear3,2) ?></td>
-				<td class="" align=""><?php echo round($otherinvestyear4,2) ?></td>
-				<td class="" align=""><?php echo round($otherinvestyear5,2) ?></td>
-				<td class="" align=""><?php echo round($totalotherinvest,2) ?></td>
+				<td class="" align="">₱<?php echo number_format($otherinvestyear1,2) ?></td>
+				<td class="" align="">₱<?php echo number_format($otherinvestyear2,2) ?></td>
+				<td class="" align="">₱<?php echo number_format($otherinvestyear3,2) ?></td>
+				<td class="" align="">₱<?php echo number_format($otherinvestyear4,2) ?></td>
+				<td class="" align="">₱<?php echo number_format($otherinvestyear5,2) ?></td>
+				<td class="" align="">₱<?php echo number_format($totalotherinvest,2) ?></td>
 			</tr>
 			
 			<tr style="background-color: gray">
 				<td ><strong>Total investing activities</strong></td>
-				<td class="" align="" style="color: <?php echo $colortotalinvest1 ?>"><?php echo $totalinvestyear1 ?></td>
-				<td class="" align="" style="color: <?php echo $colortotalinvest2 ?>"><?php echo $totalinvestyear2 ?></td>
-				<td class="" align="" style="color: <?php echo $colortotalinvest3 ?>"><?php echo $totalinvestyear3 ?></td>
-				<td class="" align="" style="color: <?php echo $colortotalinvest4 ?>"><?php echo $totalinvestyear4 ?></td>
-				<td class="" align="" style="color: <?php echo $colortotalinvest5 ?>"><?php echo $totalinvestyear5 ?></td>
-				<td class="" align="" style="color: <?php echo $colortotalinvesttotals ?>"><?php echo $totalinvesttotals ?></td>
+				<td class="" align="" style="color: <?php echo $colortotalinvest1 ?>">₱<?php echo number_format($totalinvestyear1,2) ?></td>
+				<td class="" align="" style="color: <?php echo $colortotalinvest2 ?>">₱<?php echo number_format($totalinvestyear2,2) ?></td>
+				<td class="" align="" style="color: <?php echo $colortotalinvest3 ?>">₱<?php echo number_format($totalinvestyear3,2) ?></td>
+				<td class="" align="" style="color: <?php echo $colortotalinvest4 ?>">₱<?php echo number_format($totalinvestyear4,2) ?></td>
+				<td class="" align="" style="color: <?php echo $colortotalinvest5 ?>">₱<?php echo number_format($totalinvestyear5,2) ?></td>
+				<td class="" align="" style="color: <?php echo $colortotalinvesttotals ?>">₱<?php echo number_format($totalinvesttotals,2) ?></td>
 			</tr>
 			
 		</tbody>

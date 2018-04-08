@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 03, 2018 at 08:34 AM
+-- Generation Time: Apr 08, 2018 at 07:40 AM
 -- Server version: 10.1.29-MariaDB
 -- PHP Version: 7.2.0
 
@@ -32,15 +32,16 @@ CREATE TABLE `accounts` (
   `id` int(11) NOT NULL,
   `username` text NOT NULL,
   `password` text NOT NULL,
-  `accounttype` text NOT NULL
+  `accounttype` text NOT NULL,
+  `spassword` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `accounts`
 --
 
-INSERT INTO `accounts` (`id`, `username`, `password`, `accounttype`) VALUES
-(1, 'admin', 'admin', 'admin');
+INSERT INTO `accounts` (`id`, `username`, `password`, `accounttype`, `spassword`) VALUES
+(1, 'admin', 'admin', 'admin', '102797');
 
 -- --------------------------------------------------------
 
@@ -283,6 +284,36 @@ CREATE TABLE `funding` (
 
 INSERT INTO `funding` (`id`, `loan_amount`, `anual_interest_rate`, `term_of_loan`, `monthly_rate`, `payment`, `total_amount_payable`) VALUES
 (1, 50000, 5, 60, 0.40741237836484, 941.01991847774, 56461.195108665);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `history`
+--
+
+CREATE TABLE `history` (
+  `id` int(11) NOT NULL,
+  `text` text NOT NULL,
+  `status` text NOT NULL,
+  `time` text NOT NULL,
+  `date` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `history`
+--
+
+INSERT INTO `history` (`id`, `text`, `status`, `time`, `date`) VALUES
+(4, 'Funding Update! Loan amount is changed from 50000 to 40000', 'unread', ' 04:49:04 AM', '04-06-2018'),
+(5, 'Funding Update! Loan amount is changed from 40000 to 50000', 'unread', ' 04:49:45 AM', '04-06-2018'),
+(6, 'Funding Update!  Annual Interest Rate is changed from 2 to 3', 'unread', ' 04:50:36 AM', '04-06-2018'),
+(10, 'Funding Update!  Annual Interest Rate is changed from 3 to 5', 'unread', ' 05:15:53 AM', '04-06-2018'),
+(11, 'Funding Update! Loan amount is changed from 50000 to 40000', 'unread', ' 02:29:49 PM', '04-06-2018'),
+(12, 'Funding Update! Loan amount is changed from 40000 to 50000', 'unread', ' 03:04:53 PM', '04-06-2018'),
+(13, 'Funding Update! Loan amount is changed from 50000 to 40000', 'unread', ' 11:23 PM', '04-06-2018'),
+(14, 'Funding Update! Loan amount is changed from 40000 to 50000', 'unread', ' 11:27:16 PM', '04-06-2018'),
+(15, 'Funding Update! Loan amount is changed from 50000 to 40000', 'unread', ' 11:28 PM', '04-06-2018'),
+(16, 'Funding Update! Loan amount is changed from 40000 to 50000', 'unread', ' 11:28 PM', '04-06-2018');
 
 -- --------------------------------------------------------
 
@@ -559,6 +590,22 @@ INSERT INTO `other_assets` (`id`, `target`, `year1`, `year2`, `year3`, `year4`, 
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `other_expenses`
+--
+
+CREATE TABLE `other_expenses` (
+  `id` int(11) NOT NULL,
+  `target` text NOT NULL,
+  `year1` double NOT NULL,
+  `year2` double NOT NULL,
+  `year3` double NOT NULL,
+  `year4` double NOT NULL,
+  `year5` double NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `other_income`
 --
 
@@ -757,8 +804,7 @@ CREATE TABLE `recurring_expenses` (
 --
 
 INSERT INTO `recurring_expenses` (`id`, `non_rec_expense`, `year1`, `year2`, `year3`, `year4`, `year5`) VALUES
-(1, 'Unexpected Expense', 0, 0, 0, 0, 0),
-(2, 'Other Expense', 0, 0, 0, 0, 0);
+(1, 'Unexpected Expense', 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -921,6 +967,12 @@ ALTER TABLE `funding`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `history`
+--
+ALTER TABLE `history`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `income-cost-of-sales`
 --
 ALTER TABLE `income-cost-of-sales`
@@ -972,6 +1024,12 @@ ALTER TABLE `operating_expenses`
 -- Indexes for table `other_assets`
 --
 ALTER TABLE `other_assets`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `other_expenses`
+--
+ALTER TABLE `other_expenses`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1129,6 +1187,12 @@ ALTER TABLE `funding`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `history`
+--
+ALTER TABLE `history`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
 -- AUTO_INCREMENT for table `income-cost-of-sales`
 --
 ALTER TABLE `income-cost-of-sales`
@@ -1181,6 +1245,12 @@ ALTER TABLE `operating_expenses`
 --
 ALTER TABLE `other_assets`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `other_expenses`
+--
+ALTER TABLE `other_expenses`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `other_income`

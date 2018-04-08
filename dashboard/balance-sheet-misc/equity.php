@@ -33,7 +33,7 @@
 		<table class="table table-condensed">
 		<thead>
 			<tr style="background-color: gray; color: white; border-top: 5px solid black;">
-				<th><button class="btn btn-warning"><i class="fa fa-pencil"></i></button></th>
+				<th><?php if(!isset($_SESSION['readonly'])){ ?><a href="balance-sheet-misc/equity_edit.php"class="btn btn-warning"><i class="fa fa-pencil"></i></a><?php } ?></th>
 				<th>Initial Balance </th>
 				<th>Year1</th>
 				<th>Year2</th>
@@ -47,30 +47,30 @@
 		
 			<tr>
 				<td class="" >Owner's equity</td>
-				<td class="" ><?php echo $owners_equity ?></td>
-				<td class="" ><?php echo $owners_equity ?></td>
-				<td class="" ><?php echo $owners_equity ?></td>
-				<td class="" ><?php echo $owners_equity ?></td>
-				<td class="" ><?php echo $owners_equity ?></td>
-				<td class="" ><?php echo $owners_equity ?></td>
+				<td class="" >₱<?php echo number_format($owners_equity,2) ?></td>
+				<td class="" >₱<?php echo number_format($owners_equity,2) ?></td>
+				<td class="" >₱<?php echo number_format($owners_equity,2) ?></td>
+				<td class="" >₱<?php echo number_format($owners_equity,2) ?></td>
+				<td class="" >₱<?php echo number_format($owners_equity,2) ?></td>
+				<td class="" >₱<?php echo number_format($owners_equity,2) ?></td>
 			</tr>
 			<tr>
 				<td class="" >Paid-in capital</td>
-				<td class="" ><?php echo $paid_in_capital ?></td>
-				<td class="" ><?php echo $paid_in_capital ?></td>
-				<td class="" ><?php echo $paid_in_capital ?></td>
-				<td class="" ><?php echo $paid_in_capital ?></td>
-				<td class="" ><?php echo $paid_in_capital ?></td>
-				<td class="" ><?php echo $paid_in_capital ?></td>
+				<td class="" >₱<?php echo number_format($paid_in_capital,2) ?></td>
+				<td class="" >₱<?php echo number_format($paid_in_capital,2) ?></td>
+				<td class="" >₱<?php echo number_format($paid_in_capital,2) ?></td>
+				<td class="" >₱<?php echo number_format($paid_in_capital,2) ?></td>
+				<td class="" >₱<?php echo number_format($paid_in_capital,2) ?></td>
+				<td class="" >₱<?php echo number_format($paid_in_capital,2) ?></td>
 			</tr>
 			<tr>
 				<td class="" >Preferred equity</td>
-				<td class="" ><?php echo $preferred_equity ?></td>
-				<td class="" ><?php echo $preferred_equity ?></td>
-				<td class="" ><?php echo $preferred_equity ?></td>
-				<td class="" ><?php echo $preferred_equity ?></td>
-				<td class="" ><?php echo $preferred_equity ?></td>
-				<td class="" ><?php echo $preferred_equity ?></td>
+				<td class="" >₱<?php echo number_format($preferred_equity,2) ?></td>
+				<td class="" >₱<?php echo number_format($preferred_equity,2) ?></td>
+				<td class="" >₱<?php echo number_format($preferred_equity,2) ?></td>
+				<td class="" >₱<?php echo number_format($preferred_equity,2) ?></td>
+				<td class="" >₱<?php echo number_format($preferred_equity,2) ?></td>
+				<td class="" >₱<?php echo number_format($preferred_equity,2) ?></td>
 			</tr>
 			<?php 
 			//get retained earnings
@@ -91,12 +91,12 @@
 			?>
 			<tr>
 				<td class="" >Retained earnings</td>
-				<td class="" ><?php echo round($retained_earnings,2) ?></td>
-				<td class="" ><?php echo round($retained_earnings1,2) ?></td>
-				<td class="" ><?php echo round($retained_earnings22,2) ?></td>
-				<td class="" ><?php echo round($retained_earnings33,2) ?></td>
-				<td class="" ><?php echo round($retained_earnings44,2) ?></td>
-				<td class="" ><?php echo round($retained_earnings55,2) ?></td>
+				<td class="" >₱<?php echo number_format($retained_earnings,2) ?></td>
+				<td class="" >₱<?php echo number_format($retained_earnings1,2) ?></td>
+				<td class="" >₱<?php echo number_format($retained_earnings22,2) ?></td>
+				<td class="" >₱<?php echo number_format($retained_earnings33,2) ?></td>
+				<td class="" >₱<?php echo number_format($retained_earnings44,2) ?></td>
+				<td class="" >₱<?php echo number_format($retained_earnings55,2) ?></td>
 			</tr>
 			<?php 
 			$totalequity_initial = $owners_equity + $paid_in_capital + $preferred_equity + $retained_earnings;
@@ -113,12 +113,12 @@
 			
 			<tr style="background-color: gray">
 				<td ><strong>Total equity</strong></td>
-				<td class="" ><?php echo round($totalequity_initial,2)?></td>
-				<td class="" ><?php echo round($totalequity_year1,2) ?></td>
-				<td class="" ><?php echo round($totalequity_year2,2) ?></td>
-				<td class="" ><?php echo round($totalequity_year3,2) ?></td>
-				<td class="" ><?php echo round($totalequity_year4,2) ?></td>
-				<td class="" ><?php echo round($totalequity_year5,2) ?></td>
+				<td class="" >₱<?php echo number_format($totalequity_initial,2)?></td>
+				<td class="" >₱<?php echo number_format($totalequity_year1,2) ?></td>
+				<td class="" >₱<?php echo number_format($totalequity_year2,2) ?></td>
+				<td class="" >₱<?php echo number_format($totalequity_year3,2) ?></td>
+				<td class="" >₱<?php echo number_format($totalequity_year4,2) ?></td>
+				<td class="" >₱<?php echo number_format($totalequity_year5,2) ?></td>
 			</tr>
 			
 		</tbody>
@@ -153,12 +153,12 @@
 			?>
 			</tbody><tbody>
 				<tr align="center">
-					<td><?php echo round($total_liabilities_equity_ini,2) ?></td>
-					<td><?php echo round($total_liabilities_equity_y1,2) ?></td>
-					<td><?php echo round($total_liabilities_equity_y2,2) ?></td>
-					<td><?php echo round($total_liabilities_equity_y3,2) ?></td>
-					<td><?php echo round($total_liabilities_equity_y4,2) ?></td>
-					<td><?php echo round($total_liabilities_equity_y5,2) ?></td>
+					<td>₱<?php echo number_format($total_liabilities_equity_ini,2) ?></td>
+					<td>₱<?php echo number_format($total_liabilities_equity_y1,2) ?></td>
+					<td>₱<?php echo number_format($total_liabilities_equity_y2,2) ?></td>
+					<td>₱<?php echo number_format($total_liabilities_equity_y3,2) ?></td>
+					<td>₱<?php echo number_format($total_liabilities_equity_y4,2) ?></td>
+					<td>₱<?php echo number_format($total_liabilities_equity_y5,2) ?></td>
 				</tr>
 			</tbody>
 		</table>

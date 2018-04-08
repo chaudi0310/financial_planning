@@ -39,7 +39,7 @@
 		<table class="table table-condensed">
 		<thead>
 			<tr style="background-color: gray; color: white; border-top: 5px solid black;">
-				<th>Current Liabilities <button class="btn btn-warning"><i class="fa fa-pencil"></i></button></th>
+				<th>Current Liabilities <?php if(!isset($_SESSION['readonly'])){ ?><a href="balance-sheet-misc/current_liabilities_edit.php" class="btn btn-warning"><i class="fa fa-pencil"></i></a><?php } ?></th>
 				<th>Initial Balance</th>
 				<th>Year1</th>
 				<th>Year2</th>
@@ -52,60 +52,60 @@
 		<tbody>
 			<tr>
 				<td class="" >Accounts payable</td>
-				<td class="" ><?php echo $accounts_payable ?></td>
-				<td class="" ><?php echo $accounts_payable ?></td>
-				<td class="" ><?php echo $accounts_payable ?></td>
-				<td class="" ><?php echo $accounts_payable ?></td>
-				<td class="" ><?php echo $accounts_payable ?></td>
-				<td class="" ><?php echo $accounts_payable ?></td>
+				<td class="" >₱<?php echo number_format($accounts_payable,2) ?></td>
+				<td class="" >₱<?php echo number_format($accounts_payable,2) ?></td>
+				<td class="" >₱<?php echo number_format($accounts_payable,2) ?></td>
+				<td class="" >₱<?php echo number_format($accounts_payable,2) ?></td>
+				<td class="" >₱<?php echo number_format($accounts_payable,2) ?></td>
+				<td class="" >₱<?php echo number_format($accounts_payable,2) ?></td>
 			</tr>
 			<tr>
 				<td class="" >Accrued Expenses</td>
-				<td class="" ><?php echo $accrued_expenses ?></td>
-				<td class="" ><?php echo $accrued_expenses ?></td>
-				<td class="" ><?php echo $accrued_expenses ?></td>
-				<td class="" ><?php echo $accrued_expenses ?></td>
-				<td class="" ><?php echo $accrued_expenses ?></td>
-				<td class="" ><?php echo $accrued_expenses ?></td>
+				<td class="" >₱<?php echo number_format($accrued_expenses,2) ?></td>
+				<td class="" >₱<?php echo number_format($accrued_expenses,2) ?></td>
+				<td class="" >₱<?php echo number_format($accrued_expenses,2) ?></td>
+				<td class="" >₱<?php echo number_format($accrued_expenses,2) ?></td>
+				<td class="" >₱<?php echo number_format($accrued_expenses,2) ?></td>
+				<td class="" >₱<?php echo number_format($accrued_expenses,2) ?></td>
 			</tr>
 			<tr>
 				<td class="" >Notes Payable</td>
-				<td class="" ><?php echo $notes_payable ?></td>
-				<td class="" ><?php echo $notes_payable ?></td>
-				<td class="" ><?php echo $notes_payable ?></td>
-				<td class="" ><?php echo $notes_payable ?></td>
-				<td class="" ><?php echo $notes_payable ?></td>
-				<td class="" ><?php echo $notes_payable ?></td>
+				<td class="" >₱<?php echo number_format($notes_payable,2) ?></td>
+				<td class="" >₱<?php echo number_format($notes_payable,2) ?></td>
+				<td class="" >₱<?php echo number_format($notes_payable,2) ?></td>
+				<td class="" >₱<?php echo number_format($notes_payable,2) ?></td>
+				<td class="" >₱<?php echo number_format($notes_payable,2) ?></td>
+				<td class="" >₱<?php echo number_format($notes_payable,2) ?></td>
 			</tr>
 			<tr>
 				<td class="" >Capital Leases</td>
-				<td class="" ><?php echo $capital_leases ?></td>
-				<td class="" ><?php echo $capital_leases ?></td>
-				<td class="" ><?php echo $capital_leases ?></td>
-				<td class="" ><?php echo $capital_leases ?></td>
-				<td class="" ><?php echo $capital_leases ?></td>
-				<td class="" ><?php echo $capital_leases ?></td>
+				<td class="" >₱<?php echo number_format($capital_leases,2) ?></td>
+				<td class="" >₱<?php echo number_format($capital_leases,2) ?></td>
+				<td class="" >₱<?php echo number_format($capital_leases,2) ?></td>
+				<td class="" >₱<?php echo number_format($capital_leases,2) ?></td>
+				<td class="" >₱<?php echo number_format($capital_leases,2) ?></td>
+				<td class="" >₱<?php echo number_format($capital_leases,2) ?></td>
 			</tr>
 			<tr>
 				<td class="" >Other Current Liabilities</td>
-				<td class="" ><?php echo $ocurrent_liab ?></td>
-				<td class="" ><?php echo $ocurrent_liab ?></td>
-				<td class="" ><?php echo $ocurrent_liab ?></td>
-				<td class="" ><?php echo $ocurrent_liab ?></td>
-				<td class="" ><?php echo $ocurrent_liab ?></td>
-				<td class="" ><?php echo $ocurrent_liab ?></td>
+				<td class="" >₱<?php echo number_format($ocurrent_liab,2) ?></td>
+				<td class="" >₱<?php echo number_format($ocurrent_liab,2) ?></td>
+				<td class="" >₱<?php echo number_format($ocurrent_liab,2) ?></td>
+				<td class="" >₱<?php echo number_format($ocurrent_liab,2) ?></td>
+				<td class="" >₱<?php echo number_format($ocurrent_liab,2) ?></td>
+				<td class="" >₱<?php echo number_format($ocurrent_liab,2) ?></td>
 			</tr>
 			<?php 
 				$totalcurrentliabilities = $accounts_payable + $accrued_expenses + $notes_payable + $capital_leases + $ocurrent_liab;
 			?>
 			<tr style="background-color: gray">
 				<td ><strong>Total current liabilities</strong></td>
-				<td class="" ><?php echo round($totalcurrentliabilities,2) ?></td>
-				<td class="" ><?php echo round($totalcurrentliabilities,2) ?></td>
-				<td class="" ><?php echo round($totalcurrentliabilities,2) ?></td>
-				<td class="" ><?php echo round($totalcurrentliabilities,2) ?></td>
-				<td class="" ><?php echo round($totalcurrentliabilities,2) ?></td>
-				<td class="" ><?php echo round($totalcurrentliabilities,2) ?></td>
+				<td class="" >₱<?php echo number_format($totalcurrentliabilities,2) ?></td>
+				<td class="" >₱<?php echo number_format($totalcurrentliabilities,2) ?></td>
+				<td class="" >₱<?php echo number_format($totalcurrentliabilities,2) ?></td>
+				<td class="" >₱<?php echo number_format($totalcurrentliabilities,2) ?></td>
+				<td class="" >₱<?php echo number_format($totalcurrentliabilities,2) ?></td>
+				<td class="" >₱<?php echo number_format($totalcurrentliabilities,2) ?></td>
 			</tr>
 			
 		</tbody>
@@ -162,7 +162,7 @@
 		<table class="table table-condensed">
 		<thead>
 			<tr style="background-color: gray; color: white; border-top: 5px solid black;">
-				<th>Debt <button class="btn btn-warning"><i class="fa fa-pencil"></i></button></th>
+				<th>Debt <?php if(!isset($_SESSION['readonly'])){ ?><a href="balance-sheet-misc/debt_edit.php" class="btn btn-warning"><i class="fa fa-pencil"></i></a><?php } ?></th>
 				<th>Initial Balance</th>
 				<th align="center">Year1</th>
 				<th align="center">Year2</th>
@@ -175,12 +175,12 @@
 		<tbody>
 			<tr>
 				<td class="" >Long-term debt/loan</td>
-				<td class="" ><?php echo round($loaninitial,2) ?></td>
-				<td class="" ><?php echo round($loanyearfirst,2) ?></td>
-				<td class="" ><?php echo round($loanyearsecond,2) ?></td>
-				<td class="" ><?php echo round($loanyearthird,2) ?></td>
-				<td class="" ><?php echo round($loanyearfourth,2) ?></td>
-				<td class="" ><?php echo round($loanyearfifth,2) ?></td>
+				<td class="" >₱<?php echo number_format($loaninitial,2) ?></td>
+				<td class="" >₱<?php echo number_format($loanyearfirst,2) ?></td>
+				<td class="" >₱<?php echo number_format($loanyearsecond,2) ?></td>
+				<td class="" >₱<?php echo number_format($loanyearthird,2) ?></td>
+				<td class="" >₱<?php echo number_format($loanyearfourth,2) ?></td>
+				<td class="" >₱<?php echo number_format($loanyearfifth,2) ?></td>
 			</tr>
 			<?php
 				$queryltd = mysqli_query($db, "SELECT * FROM debt WHERE id = '1'");
@@ -195,7 +195,7 @@
 					$oltdyear5 = $row['year5'];
 					
 				}
-				$totaldebt_ib = $oltdinitial_balance + $loaninitial;
+				$totaldebt_ib = $oltdinitial_balance + $loaninitial + $totalcurrentliabilities;
 				$totaldeb_y1 = $oltdyear1 + $loanyearfirst + $totalcurrentliabilities;
 				$totaldeb_y2 = $oltdyear2 + $loanyearsecond + $totalcurrentliabilities;
 				$totaldeb_y3 = $oltdyear3 + $loanyearthird + $totalcurrentliabilities;
@@ -204,23 +204,23 @@
 			?>
 			<tr>
 				<td class="" >Other long-term debt</td>
-				<td class="" ><?php echo $oltdinitial_balance ?></td>
-				<td class="" ><?php echo $oltdyear1 ?></td>
-				<td class="" ><?php echo $oltdyear2 ?></td>
-				<td class="" ><?php echo $oltdyear3 ?></td>
-				<td class="" ><?php echo $oltdyear4 ?></td>
-				<td class="" ><?php echo $oltdyear5 ?></td>
+				<td class="" >₱<?php echo number_format($oltdinitial_balance,2) ?></td>
+				<td class="" >₱<?php echo number_format($oltdyear1,2) ?></td>
+				<td class="" >₱<?php echo number_format($oltdyear2,2) ?></td>
+				<td class="" >₱<?php echo number_format($oltdyear3,2) ?></td>
+				<td class="" >₱<?php echo number_format($oltdyear4,2) ?></td>
+				<td class="" >₱<?php echo number_format($oltdyear5,2) ?></td>
 			</tr>
 			
 			
 			<tr style="background-color: gray">
 				<td ><strong>Total Debt</strong></td>
-				<td class="" ><?php echo round($totaldebt_ib,2)?></td>
-				<td class="" ><?php echo round($totaldeb_y1,2)?></td>
-				<td class="" ><?php echo round($totaldeb_y2,2)?></td>
-				<td class="" ><?php echo round($totaldeb_y3,2)?></td>
-				<td class="" ><?php echo round($totaldeb_y4,2)?></td>
-				<td class="" ><?php echo round($totaldeb_y5,2)?></td>
+				<td class="" >₱<?php echo number_format($totaldebt_ib,2)?></td>
+				<td class="" >₱<?php echo number_format($totaldeb_y1,2)?></td>
+				<td class="" >₱<?php echo number_format($totaldeb_y2,2)?></td>
+				<td class="" >₱<?php echo number_format($totaldeb_y3,2)?></td>
+				<td class="" >₱<?php echo number_format($totaldeb_y4,2)?></td>
+				<td class="" >₱<?php echo number_format($totaldeb_y5,2)?></td>
 			</tr>
 			
 		</tbody>

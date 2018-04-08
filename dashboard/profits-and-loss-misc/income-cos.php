@@ -34,12 +34,12 @@
 				
 			 ?>
 			<tr>
-				<td class=""><?php echo round($product,2); ?></td>
-				<td class=""><?php echo round($year1,2); ?></td>
-				<td class=""><?php echo round($year2,2); ?></td>
-				<td class=""><?php echo round($year3,2); ?></td>
-				<td class=""><?php echo round($year4,2); ?></td>
-				<td class=""><?php echo round($year5,2); ?></td>
+				<td class=""><?php echo $product; ?></td>
+				<td class="">₱<?php echo number_format($year1,2); ?></td>
+				<td class="">₱<?php echo number_format($year2,2); ?></td>
+				<td class="">₱<?php echo number_format($year3,2); ?></td>
+				<td class="">₱<?php echo number_format($year4,2); ?></td>
+				<td class="">₱<?php echo number_format($year5,2); ?></td>
 			</tr>
 			<?php
 			} 
@@ -88,11 +88,11 @@
 		<tfoot>
 		<tr>
 		<th>Cost of good sold</th>
-		<th><?php echo round($tgs,2) ?></th>
-		<th><?php echo round($tgsy2,2) ?></th>
-		<th><?php echo round($tgsy3,2) ?></th>
-		<th><?php echo round($tgsy4,2) ?></th>
-		<th><?php echo round($tgsy5,2) ?></th>
+		<th>₱<?php echo number_format($tgs,2) ?></th>
+		<th>₱<?php echo number_format($tgsy2,2) ?></th>
+		<th>₱<?php echo number_format($tgsy3,2) ?></th>
+		<th>₱<?php echo number_format($tgsy4,2) ?></th>
+		<th>₱<?php echo number_format($tgsy5,2) ?></th>
 		</tr>
 		</tfoot>
 		</table>
@@ -110,11 +110,11 @@
 			</tr>
 			<tbody>
 				<tr align="center">
-					<td><?php echo round($gfy1,2) ?></td>
-					<td><?php echo round($gfy2,2) ?></td>
-					<td><?php echo round($gfy3,2) ?></td>
-					<td><?php echo round($gfy4,2) ?></td>
-					<td><?php echo round($gfy5,2) ?></td>
+					<td>₱<?php echo number_format($gfy1,2) ?></td>
+					<td>₱<?php echo number_format($gfy2,2) ?></td>
+					<td>₱<?php echo number_format($gfy3,2) ?></td>
+					<td>₱<?php echo number_format($gfy4,2) ?></td>
+					<td>₱<?php echo number_format($gfy5,2) ?></td>
 				</tr>
 			</tbody>
 		</table>

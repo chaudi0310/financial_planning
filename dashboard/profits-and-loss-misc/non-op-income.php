@@ -1,7 +1,7 @@
 <table class="table table-condensed">
 	<thead>
 		<tr style="color:white; background-color: gray; border-bottom: 10px black;">
-			<th>Non-Operational Income</th>
+			<th>Non-Operational Income <?php if(!isset($_SESSION['readonly'])){ ?><a class="btn btn-warning" href="profits-and-loss-misc/non-op-income-edit.php"><i class="fa fa-pencil"></i></a> <?php } ?></th>
 			<th>Year 1</th>
 			<th>Year 2</th>
 			<th>Year 3</th>
@@ -60,35 +60,35 @@
 	?>
 		<tr>
 			<td>Rental</td>
-			<td><?php echo round($rental1,2);?></td>
-			<td><?php echo round($rental2,2);?></td>
-			<td><?php echo round($rental3,2);?></td>
-			<td><?php echo round($rental4,2);?></td>
-			<td><?php echo round($rental5,2);?></td>
+			<td>₱<?php echo number_format($rental1,2);?></td>
+			<td>₱<?php echo number_format($rental2,2);?></td>
+			<td>₱<?php echo number_format($rental3,2);?></td>
+			<td>₱<?php echo number_format($rental4,2);?></td>
+			<td>₱<?php echo number_format($rental5,2);?></td>
 		</tr>
 		<tr>
 			<td>Interest Income</td>
-			<td><?php echo round($ii1,2);?></td>
-			<td><?php echo round($ii2,2);?></td>
-			<td><?php echo round($ii3,2);?></td>
-			<td><?php echo round($ii4,2);?></td>
-			<td><?php echo round($ii5,2);?></td>
+			<td>₱<?php echo number_format($ii1,2);?></td>
+			<td>₱<?php echo number_format($ii2,2);?></td>
+			<td>₱<?php echo number_format($ii3,2);?></td>
+			<td>₱<?php echo number_format($ii4,2);?></td>
+			<td>₱<?php echo number_format($ii5,2);?></td>
 		</tr>
 		<tr>
 			<td>Loss(gain) on sale of assets</td>
-			<td><?php echo round($sos1,2); ?></td>
-			<td><?php echo round($sos2,2); ?></td>
-			<td><?php echo round($sos3,2); ?></td>
-			<td><?php echo round($sos4,2); ?></td>
-			<td><?php echo round($sos5,2); ?></td>
+			<td>₱<?php echo number_format($sos1,2); ?></td>
+			<td>₱<?php echo number_format($sos2,2); ?></td>
+			<td>₱<?php echo number_format($sos3,2); ?></td>
+			<td>₱<?php echo number_format($sos4,2); ?></td>
+			<td>₱<?php echo number_format($sos5,2); ?></td>
 		</tr>
 		<tr>
 			<td>Other Income</td>
-			<td><?php echo round($oi1,2); ?></td>
-			<td><?php echo round($oi2,2); ?></td>
-			<td><?php echo round($oi3,2); ?></td>
-			<td><?php echo round($oi4,2); ?></td>
-			<td><?php echo round($oi5,2); ?></td>
+			<td>₱<?php echo number_format($oi1,2); ?></td>
+			<td>₱<?php echo number_format($oi2,2); ?></td>
+			<td>₱<?php echo number_format($oi3,2); ?></td>
+			<td>₱<?php echo number_format($oi4,2); ?></td>
+			<td>₱<?php echo number_format($oi5,2); ?></td>
 		</tr>
 		
 	</tbody>
@@ -103,17 +103,17 @@
 	?>
 		<tr>
 			<th>Total Non-Operational Income</th>
-			<th><?php echo round($total1,2) ?></th>
-			<th><?php echo round($total2,2) ?></th>
-			<th><?php echo round($total3,2) ?></th>
-			<th><?php echo round($total4,2) ?></th>
-			<th><?php echo round($total5,2) ?></th>
+			<th>₱<?php echo number_format($total1,2) ?></th>
+			<th>₱<?php echo number_format($total2,2) ?></th>
+			<th>₱<?php echo number_format($total3,2) ?></th>
+			<th>₱<?php echo number_format($total4,2) ?></th>
+			<th>₱<?php echo number_format($total5,2) ?></th>
 		</tr>
 	</tfoot>
 </table>
 <br>
 <h3>Total Income</h3>
-<table class="table table-condensed" style="border: 5px solid blue">
+<table class="table table-condensed" style="border: 5px solid black">
 	<?php
 		$income1 = $total1 + $gfy1;
 		$income2 = $total2 + $gfy2;
@@ -131,11 +131,11 @@
 		</tr>
 		<tr align="center">
 			
-			<th><?php echo round($income1,2); ?></th>
-			<th><?php echo round($income2,2); ?></th>
-			<th><?php echo round($income3,2); ?></th>
-			<th><?php echo round($income4,2); ?></th>
-			<th><?php echo round($income5,2); ?></th>
+			<th>₱<?php echo number_format($income1,2); ?></th>
+			<th>₱<?php echo number_format($income2,2); ?></th>
+			<th>₱<?php echo number_format($income3,2); ?></th>
+			<th>₱<?php echo number_format($income4,2); ?></th>
+			<th>₱<?php echo number_format($income5,2); ?></th>
 		</tr>
 		
 	</thead>

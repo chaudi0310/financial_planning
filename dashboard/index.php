@@ -1,3 +1,17 @@
+<?php
+session_start();
+if(isset($_SESSION['username'])){
+	
+} else {
+	?>
+	<script>
+		window.location = "../index.php";
+	</script>
+	<?php
+}
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -66,10 +80,38 @@
             <span class="nav-link-text">Loan Payment Calculator</span>
           </a>
         </li>
+		<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Settings">
+          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseSettings" data-parent="#exampleAccordion">
+            <i class="fa fa-fw fa-wrench"></i>
+            <span class="nav-link-text">Settings</span>
+          </a>
+          <ul class="sidenav-second-level collapse" id="collapseSettings">
+            <li>
+              <a data-toggle="modal" href="#userModal">Change Username</a>
+			</li>
+            <li>
+              <a data-toggle="modal" href="#passModal">Change Password</a>
+            </li>
+			<li>
+              <a href="#">Backup Database</a>
+            </li>
+			<li>
+			  <a data-toggle="modal" href="#readModal">Read-only Mode <?php if(isset($_SESSION['readonly'])){ ?><i style="color: green"class="fa fa-circle"></i> <?php } ?></a>
+			</li>
+          </ul>
+        </li>
        
       </ul>
       
       <ul class="navbar-nav ml-auto">
+	  <!--Recent Activity-->
+	  
+	  <li class="nav-item">
+          <a class="nav-link" data-toggle="modal" href="#historyModal" title="Recent Activity">
+            <i class="fa fa-fw fa-history"></i></a>
+        </li>
+		
+		
          <li class="nav-item">
           <a class="nav-link" href="logout.php">
             <i class="fa fa-fw fa-sign-out"></i>Logout</a>
@@ -77,6 +119,17 @@
       </ul>
     </div>
   </nav>
+  <?php include_once 'modal/password.php'; ?>
+  <?php include_once 'modal/username.php'; ?>
+  <?php include_once 'modal/historyModal.php'; ?>
+  <?php
+  if(!isset($_SESSION['readonly'])){
+	include_once 'modal/readModal.php'; 
+  } else {
+	include_once 'modal/unreadModal.php';
+  }
+  ?>
+  
   <div class="content-wrapper">
     <div class="container-fluid">
       <!-- Breadcrumbs-->
@@ -94,7 +147,7 @@
               <div class="card-body-icon">
                 <i class="fa fa-fw fa-comments"></i>
               </div>
-              <div class="mr-5">26 Entry Products</div>
+              <div class="mr-5">20 Products</div>
             </div>
             <a class="card-footer text-white clearfix small z-1" href="#">
               <span class="float-left">View Details</span>
@@ -154,6 +207,24 @@
         </div>
       </div>
       <!-- Area Chart Example-->
+	  <div class="row">
+        <div class="col-lg-12">
+          <!-- Example Bar Chart Card-->
+         <div class="card mb-3">
+            <div class="card-header">
+              <i class="fa fa-bar-chart"></i>Cash Flow Bar Chart</div>
+            <div class="card-body">
+              <canvas id="myBarChart" width="100" height="30"></canvas>
+            </div>
+            <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+          </div>
+          <!-- Card Columns Example Social Feed-->
+         
+         
+          <!-- /Card Columns-->
+        </div>
+        
+      </div>
       <div class="card mb-3">
         <div class="card-header">
           <i class="fa fa-area-chart"></i> Cash Flow Area Chart</div>
@@ -162,21 +233,8 @@
         </div>
         
       </div>
-      <div class="row">
-        <div class="col-lg-8">
-          <!-- Example Bar Chart Card-->
-         
-          <!-- Card Columns Example Social Feed-->
-         
-         
-          <!-- /Card Columns-->
-        </div>
-        <div class="col-lg-4">
-          <!-- Example Pie Chart Card-->
-          
-          
-        </div>
-      </div>
+	  
+      
     
     </div>
     <!-- /.container-fluid-->

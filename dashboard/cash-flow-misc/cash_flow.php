@@ -27,7 +27,13 @@
 			$commulativecolor6 = "red";
 		}
 		//beginningcashbalance
-		$bcashbalance1 = $loaninitial; 
+		$bcashbalanceq = mysqli_query($db, "SELECT * FROM current_assets WHERE id = '1'");
+		$cbcashbalanceq = mysqli_num_rows($bcashbalanceq);
+		if($cbcashbalanceq > 0){
+			$row = mysqli_fetch_assoc($bcashbalanceq);
+			$beginning = $row['balance'];
+		}
+		$bcashbalance1 = $beginning; 
 		$bcashbalance2 = $bcashbalance1 + $commulativey1;
 		$bcashbalance3 = $bcashbalance2 + $commulativey2;
 		$bcashbalance4 = $bcashbalance3 + $commulativey3;
@@ -63,30 +69,30 @@
 			
 			<tr style="background-color: gray">
 				<td ><strong>Cumulative cash flow</strong></td>
-				<td class="" align="" style="color: <?php echo $commulativecolor1 ?> ;"><?php echo round($commulativey1,2) ?></td>
-				<td class="" align="" style="color: <?php echo $commulativecolor2 ?> ;"><?php echo round($commulativey2,2) ?></td>
-				<td class="" align="" style="color: <?php echo $commulativecolor3 ?> ;"><?php echo round($commulativey3,2) ?></td>
-				<td class="" align="" style="color: <?php echo $commulativecolor4 ?> ;"><?php echo round($commulativey4,2) ?></td>
-				<td class="" align="" style="color: <?php echo $commulativecolor5 ?> ;"><?php echo round($commulativey5,2) ?></td>
-				<td style="color: <?php echo $commulativecolor6 ?> ;"><?php echo round($totalcommulative,2) ?></td>
+				<td class="" align="" style="color: <?php echo $commulativecolor1 ?> ;">₱<?php echo number_format($commulativey1,2) ?></td>
+				<td class="" align="" style="color: <?php echo $commulativecolor2 ?> ;">₱<?php echo number_format($commulativey2,2) ?></td>
+				<td class="" align="" style="color: <?php echo $commulativecolor3 ?> ;">₱<?php echo number_format($commulativey3,2) ?></td>
+				<td class="" align="" style="color: <?php echo $commulativecolor4 ?> ;">₱<?php echo number_format($commulativey4,2) ?></td>
+				<td class="" align="" style="color: <?php echo $commulativecolor5 ?> ;">₱<?php echo number_format($commulativey5,2) ?></td>
+				<td style="color: <?php echo $commulativecolor6 ?> ;">₱<?php echo number_format($totalcommulative,2) ?></td>
 			</tr>
 			<br>
 			<tr style="background-color: gray">
 				<td ><strong>Beginning cash balance</strong></td>
-				<td class="" align=""><?php echo round($bcashbalance1,2) ?></td>
-				<td class="" align=""><?php echo round($bcashbalance2,2) ?></td>
-				<td class="" align=""><?php echo round($bcashbalance3,2) ?></td>
-				<td class="" align=""><?php echo round($bcashbalance4,2) ?></td>
-				<td class="" align=""><?php echo round($bcashbalance5,2) ?></td>
+				<td class="" align="">₱<?php echo number_format($bcashbalance1,2) ?></td>
+				<td class="" align="">₱<?php echo number_format($bcashbalance2,2) ?></td>
+				<td class="" align="">₱<?php echo number_format($bcashbalance3,2) ?></td>
+				<td class="" align="">₱<?php echo number_format($bcashbalance4,2) ?></td>
+				<td class="" align="">₱<?php echo number_format($bcashbalance5,2) ?></td>
 				<td></td>
 			</tr>
 			<tr style="background-color: gray">
 				<td ><strong>Ending cash balance</strong></td>
-				<td class="" align=""><?php echo round($ecashbalance1,2) ?></td>
-				<td class="" align=""><?php echo round($ecashbalance2,2) ?></td>
-				<td class="" align=""><?php echo round($ecashbalance3,2) ?></td>
-				<td class="" align=""><?php echo round($ecashbalance4,2) ?></td>
-				<td class="" align=""><?php echo round($ecashbalance5,2) ?></td>
+				<td class="" align="">₱<?php echo number_format($ecashbalance1,2) ?></td>
+				<td class="" align="">₱<?php echo number_format($ecashbalance2,2) ?></td>
+				<td class="" align="">₱<?php echo number_format($ecashbalance3,2) ?></td>
+				<td class="" align="">₱<?php echo number_format($ecashbalance4,2) ?></td>
+				<td class="" align="">₱<?php echo number_format($ecashbalance5,2) ?></td>
 				<td></td>
 			</tr>
 			<?php

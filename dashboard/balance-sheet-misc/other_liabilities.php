@@ -7,10 +7,10 @@
 	
 	
 		
-		<table class="table table-condensed">
+		<table id="#otherliabtable" class="table table-condensed">
 		<thead>
 			<tr style="background-color: gray; color: white; border-top: 5px solid black;">
-				<th>Other Liabilities <button class="btn btn-success"><i class="fa fa-plus"></i></button></th>
+				<th>Other Liabilities <?php if(!isset($_SESSION['readonly'])){ ?><button type="button" data-toggle="modal" data-target="#addOtherLiabilities" data-target class="btn btn-success"><i class="fa fa-plus"></i></button><?php } ?></th>
 				<th>Initial Balance</th>
 				<th>Year1</th>
 				<th>Year2</th>
@@ -31,14 +31,31 @@
 			
 		?>
 			<tr>
-				<td class="" ><button class="btn btn-danger"><i class="fa fa-trash"></i></button> <?php echo $olname; ?></td>
-				<td class="" ><?php echo $olvalue; ?></td>
-				<td class="" ><?php echo $olvalue; ?></td>
-				<td class="" ><?php echo $olvalue; ?></td>
-				<td class="" ><?php echo $olvalue; ?></td>
-				<td class="" ><?php echo $olvalue; ?></td>
-				<td class="" ><?php echo $olvalue; ?></td>
+				<td class="" ><?php if(!isset($_SESSION['readonly'])){ ?><button class="btn btn-danger" onclick = del("<?php echo $row['id']; ?>") ><i class="fa fa-trash"></i></button> <?php } echo $olname; ?></td>
+				<td class="" >₱<?php echo number_format($olvalue,2); ?></td>
+				<td class="" >₱<?php echo number_format($olvalue,2); ?></td>
+				<td class="" >₱<?php echo number_format($olvalue,2); ?></td>
+				<td class="" >₱<?php echo number_format($olvalue,2); ?></td>
+				<td class="" >₱<?php echo number_format($olvalue,2); ?></td>
+				<td class="" >₱<?php echo number_format($olvalue,2); ?></td>
 			</tr>
+			<!-- script for other liabilities -->
+			<script>
+	function del(a)
+	{
+		var x = confirm('Do you really want to delete');
+		if( x == true)
+		{
+			window.location = 'actions/deleteOtherLiabilities.php?id='+a;
+		}
+		else
+		{
+			window.location = 'balance-sheet.php';
+		}
+	}
+	
+</script>
+<!--close -->
 		<?php 
 		}
 		}
@@ -46,16 +63,17 @@
 		$totalliab = mysqli_query($db, "SELECT SUM(value) AS total_liab FROM other_liabilities");
 		$row = mysqli_fetch_assoc($totalliab);
 		$total_other_liabilities = $row['total_liab'];
+		include_once 'modal/addOtherLiabilities.php';
 		?>
 			
 			<tr style="background-color: gray">
 				<td ><strong>Total other liabilities</strong></td>
-				<td class="" ><?php echo $total_other_liabilities ?></td>
-				<td class="" ><?php echo $total_other_liabilities ?></td>
-				<td class="" ><?php echo $total_other_liabilities ?></td>
-				<td class="" ><?php echo $total_other_liabilities ?></td>
-				<td class="" ><?php echo $total_other_liabilities ?></td>
-				<td class="" ><?php echo $total_other_liabilities ?></td>
+				<td class="" >₱<?php echo number_format($total_other_liabilities,2) ?></td>
+				<td class="" >₱<?php echo number_format($total_other_liabilities,2) ?></td>
+				<td class="" >₱<?php echo number_format($total_other_liabilities,2) ?></td>
+				<td class="" >₱<?php echo number_format($total_other_liabilities,2) ?></td>
+				<td class="" >₱<?php echo number_format($total_other_liabilities,2) ?></td>
+				<td class="" >₱<?php echo number_format($total_other_liabilities,2) ?></td>
 			</tr>
 			
 		</tbody>
@@ -89,12 +107,12 @@
 			?>
 			</tbody><tbody>
 				<tr align="center">
-					<td><?php echo round($totalcurrentliabilities + $loaninitial + $total_other_liabilities,2) ?></td>
-					<td><?php echo round($totalcurrentliabilities + $loanyearfirst + $total_other_liabilities,2) ?></td>
-					<td><?php echo round($totalcurrentliabilities + $loanyearsecond + $total_other_liabilities,2) ?></td>
-					<td><?php echo round($totalcurrentliabilities + $loanyearthird + $total_other_liabilities,2) ?></td>
-					<td><?php echo round($totalcurrentliabilities + $loanyearfourth + $total_other_liabilities,2) ?></td>
-					<td><?php echo round($totalcurrentliabilities + $loanyearfifth + $total_other_liabilities,2) ?></td>
+					<td>₱<?php echo number_format($totalcurrentliabilities + $loaninitial + $total_other_liabilities,2) ?></td>
+					<td>₱<?php echo number_format($totalcurrentliabilities + $loanyearfirst + $total_other_liabilities,2) ?></td>
+					<td>₱<?php echo number_format($totalcurrentliabilities + $loanyearsecond + $total_other_liabilities,2) ?></td>
+					<td>₱<?php echo number_format($totalcurrentliabilities + $loanyearthird + $total_other_liabilities,2) ?></td>
+					<td>₱<?php echo number_format($totalcurrentliabilities + $loanyearfourth + $total_other_liabilities,2) ?></td>
+					<td>₱<?php echo number_format($totalcurrentliabilities + $loanyearfifth + $total_other_liabilities,2) ?></td>
 				</tr>
 			</tbody>
 		</table>

@@ -9,9 +9,9 @@
 	
 	
 		<table class="table table-condensed">
-		<thead style="background-color: blue; color:white">
+		<thead style="background-color: gray; color:white">
 			<tr>
-				<th>INFLATION <button class="btn btn-warning update-inflation" type="button" data-inflation-rate="<?php echo $row['anual_inflation_rate']; ?>" data-toggle="modal" data-target="#updateInflation"><i class="fa fa-pencil"></i></button></th>
+				<th>INFLATION <?php if(!isset($_SESSION['readonly'])){ ?><button class="btn btn-warning update-inflation" type="button" data-inflation-rate="<?php echo $row['anual_inflation_rate']; ?>" data-toggle="modal" data-target="#updateInflation"><i class="fa fa-pencil"></i></button><?php } ?></th>
 				<?php include_once 'modal/updateInflation.php'; ?>
 				<th></th>
 				<th></th>

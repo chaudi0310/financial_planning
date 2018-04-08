@@ -127,7 +127,7 @@
 		<h2>EXPENSE</h2>
 		<table class="table table-condensed">
 		<thead>
-			<tr style="color:white; background-color: gray; border-top: 5px solid #0099cc;">
+			<tr style="background-color: gray; color: white; border-top: 5px solid black;">
 				<th>Operating Expense</th>
 				<th>Year1</th>
 				<th>Year2</th>
@@ -139,84 +139,84 @@
 		</thead>
 		<tbody>
 			<tr>
-				<td class=""><button type="button" class="btn btn-warning update-sm" data-id=<?php echo $smid;?> data-sm="<?php echo $sm1; ?>" data-toggle="modal" data-target="#updateSM"><i class="fa fa-pencil"></i></button> Sales and Marketing</td>
-				<td class=""><?php echo round($sm1,2) ?></td>
-				<td class=""><?php echo round($sm2,2) ?></td>
-				<td class=""><?php echo round($sm3,2) ?></td>
-				<td class=""><?php echo round($sm4,2) ?></td>
-				<td class=""><?php echo round($sm5,2) ?></td>
+				<td class=""><?php if(!isset($_SESSION['readonly'])){ ?><button type="button" class="btn btn-warning update-sm" data-id=<?php echo $smid;?> data-sm="<?php echo $sm1; ?>" data-toggle="modal" data-target="#updateSM"><i class="fa fa-pencil"></i></button><?php } ?> Sales and Marketing</td>
+				<td class="">₱<?php echo number_format($sm1,2) ?></td>
+				<td class="">₱<?php echo number_format($sm2,2) ?></td>
+				<td class="">₱<?php echo number_format($sm3,2) ?></td>
+				<td class="">₱<?php echo number_format($sm4,2) ?></td>
+				<td class="">₱<?php echo number_format($sm5,2) ?></td>
 			</tr>
 			<tr>
-				<td class=""><button type="button" class="btn btn-warning disabled"><i class="fa fa-pencil"></i></button> Depreciation</td>
-				<td class=""><?php echo round($dep1,2) ?></td>
-				<td class=""><?php echo round($dep2,2) ?></td>
-				<td class=""><?php echo round($dep3,2) ?></td>
-				<td class=""><?php echo round($dep4,2) ?></td>
-				<td class=""><?php echo round($dep5,2) ?></td>
+				<td class=""><?php if(!isset($_SESSION['readonly'])){ ?><button type="button" class="btn btn-warning disabled"><i class="fa fa-pencil"></i></button><?php } ?> Depreciation</td>
+				<td class="">₱<?php echo number_format($dep1,2) ?></td>
+				<td class="">₱<?php echo number_format($dep2,2) ?></td>
+				<td class="">₱<?php echo number_format($dep3,2) ?></td>
+				<td class="">₱<?php echo number_format($dep4,2) ?></td>
+				<td class="">₱<?php echo number_format($dep5,2) ?></td>
 			</tr>
 			<tr>
-				<td class=""><button type="button" class="btn btn-warning update-ins" data-id=<?php echo $insid;?> data-ins="<?php echo $ins1; ?>" data-toggle="modal" data-target="#updateINS"><i class="fa fa-pencil"></i></button> Insurance</td>
-				<td class=""><?php echo round($ins1,2) ?></td>
-				<td class=""><?php echo round($ins2,2) ?></td>
-				<td class=""><?php echo round($ins3,2) ?></td>
-				<td class=""><?php echo round($ins4,2) ?></td>
-				<td class=""><?php echo round($ins5,2) ?></td>
+				<td class=""><?php if(!isset($_SESSION['readonly'])){ ?><button type="button" class="btn btn-warning update-ins" data-id=<?php echo $insid;?> data-ins="<?php echo $ins1; ?>" data-toggle="modal" data-target="#updateINS"><i class="fa fa-pencil"></i></button><?php } ?> Insurance</td>
+				<td class="">₱<?php echo number_format($ins1,2) ?></td>
+				<td class="">₱<?php echo number_format($ins2,2) ?></td>
+				<td class="">₱<?php echo number_format($ins3,2) ?></td>
+				<td class="">₱<?php echo number_format($ins4,2) ?></td>
+				<td class="">₱<?php echo number_format($ins5,2) ?></td>
 			</tr>
 			<tr>
-				<td class=""><button type="button" class="btn btn-warning update-pt" data-id=<?php echo $ptid;?> data-pt="<?php echo $pt1; ?>" data-toggle="modal" data-target="#updatePT"><i class="fa fa-pencil"></i></button> Payroll and Tax</td>
-				<td class=""><?php echo round($pt1,2) ?></td>
-				<td class=""><?php echo round($pt2,2) ?></td>
-				<td class=""><?php echo round($pt3,2) ?></td>
-				<td class=""><?php echo round($pt4,2) ?></td>
-				<td class=""><?php echo round($pt5,2) ?></td>
+				<td class=""><?php if(!isset($_SESSION['readonly'])){ ?><button type="button" class="btn btn-warning update-pt" data-id=<?php echo $ptid;?> data-pt="<?php echo $pt1; ?>" data-toggle="modal" data-target="#updatePT"><i class="fa fa-pencil"></i></button><?php } ?> Payroll and Tax</td>
+				<td class="">₱<?php echo number_format($pt1,2) ?></td>
+				<td class="">₱<?php echo number_format($pt2,2) ?></td>
+				<td class="">₱<?php echo number_format($pt3,2) ?></td>
+				<td class="">₱<?php echo number_format($pt4,2) ?></td>
+				<td class="">₱<?php echo number_format($pt5,2) ?></td>
 			</tr>
 			<tr>
-				<td class=""><button type="button" class="btn btn-warning update-prop" data-id=<?php echo $propid;?> data-prop="<?php echo $prop1; ?>" data-toggle="modal" data-target="#updatePROP"><i class="fa fa-pencil"></i></button> Property Taxes</td>
-				<td class=""><?php echo round($prop1,2) ?></td>
-				<td class=""><?php echo round($prop2,2) ?></td>
-				<td class=""><?php echo round($prop3,2) ?></td>
-				<td class=""><?php echo round($prop4,2) ?></td>
-				<td class=""><?php echo round($prop5,2) ?></td>
+				<td class=""><?php if(!isset($_SESSION['readonly'])){ ?><button type="button" class="btn btn-warning update-prop" data-id=<?php echo $propid;?> data-prop="<?php echo $prop1; ?>" data-toggle="modal" data-target="#updatePROP"><i class="fa fa-pencil"></i></button><?php } ?> Property Taxes</td>
+				<td class="">₱<?php echo number_format($prop1,2) ?></td>
+				<td class="">₱<?php echo number_format($prop2,2) ?></td>
+				<td class="">₱<?php echo number_format($prop3,2) ?></td>
+				<td class="">₱<?php echo number_format($prop4,2) ?></td>
+				<td class="">₱<?php echo number_format($prop5,2) ?></td>
 			</tr>
 			<tr>
-				<td class=""><button type="button"class="btn btn-warning disabled" ><i class="fa fa-pencil"></i></button> Maintenance, Repair, and Overhaul</td>
-				<td class=""><?php echo round($main1,2) ?></td>
-				<td class=""><?php echo round($main2,2) ?></td></td>
-				<td class=""><?php echo round($main3,2) ?></td></td>
-				<td class=""><?php echo round($main4,2) ?></td></td>
-				<td class=""><?php echo round($main5,2) ?></td></td>
+				<td class=""><?php if(!isset($_SESSION['readonly'])){ ?><button type="button"class="btn btn-warning disabled" ><i class="fa fa-pencil"></i></button><?php } ?> Maintenance, Repair, and Overhaul</td>
+				<td class="">₱<?php echo number_format($main1,2) ?></td>
+				<td class="">₱<?php echo number_format($main2,2) ?></td></td>
+				<td class="">₱<?php echo number_format($main3,2) ?></td></td>
+				<td class="">₱<?php echo number_format($main4,2) ?></td></td>
+				<td class="">₱<?php echo number_format($main5,2) ?></td></td>
 			</tr>
 			<tr>
-				<td class=""><button type="button" class="btn btn-warning update-ut" data-id=<?php echo $utid;?> data-ut="<?php echo $ut1; ?>" data-toggle="modal" data-target="#updateUT"><i class="fa fa-pencil"></i></button> Utilities</td>
-				<td class=""><?php echo round($ut1,2) ?></td></td>
-				<td class=""><?php echo round($ut2,2) ?></td>
-				<td class=""><?php echo round($ut3,2) ?></td>
-				<td class=""><?php echo round($ut4,2) ?></td>
-				<td class=""><?php echo round($ut5,2) ?></td>
+				<td class=""><?php if(!isset($_SESSION['readonly'])){ ?><button type="button" class="btn btn-warning update-ut" data-id=<?php echo $utid;?> data-ut="<?php echo $ut1; ?>" data-toggle="modal" data-target="#updateUT"><i class="fa fa-pencil"></i></button><?php } ?> Utilities</td>
+				<td class="">₱<?php echo number_format($ut1,2) ?></td></td>
+				<td class="">₱<?php echo number_format($ut2,2) ?></td>
+				<td class="">₱<?php echo number_format($ut3,2) ?></td>
+				<td class="">₱<?php echo number_format($ut4,2) ?></td>
+				<td class="">₱<?php echo number_format($ut5,2) ?></td>
 			</tr>
 			<tr>
-				<td class=""><button type="button" class="btn btn-warning update-ad" data-id=<?php echo $adid;?> data-ad="<?php echo $ad1; ?>" data-toggle="modal" data-target="#updateAD"><i class="fa fa-pencil"></i></button> Administrative Fees</td>
-				<td class=""><?php echo round($ad1,2) ?></td>
-				<td class=""><?php echo round($ad2,2) ?></td>
-				<td class=""><?php echo round($ad3,2) ?></td>
-				<td class=""><?php echo round($ad4,2) ?></td>
-				<td class=""><?php echo round($ad5,2) ?></td>
+				<td class=""><?php if(!isset($_SESSION['readonly'])){ ?><button type="button" class="btn btn-warning update-ad" data-id=<?php echo $adid;?> data-ad="<?php echo $ad1; ?>" data-toggle="modal" data-target="#updateAD"><i class="fa fa-pencil"></i></button><?php } ?> Administrative Fees</td>
+				<td class="">₱<?php echo number_format($ad1,2) ?></td>
+				<td class="">₱<?php echo number_format($ad2,2) ?></td>
+				<td class="">₱<?php echo number_format($ad3,2) ?></td>
+				<td class="">₱<?php echo number_format($ad4,2) ?></td>
+				<td class="">₱<?php echo number_format($ad5,2) ?></td>
 			</tr>
 			<tr>
-				<td class=""><button type="button" class="btn btn-warning disabled"><i class="fa fa-pencil"></i></button> Interest expense on long-term debt</td>
-				<td class=""><?php echo round($exp1,2) ?></td>
-				<td class=""><?php echo round($exp2,2) ?></td>
-				<td class=""><?php echo round($exp3,2) ?></td>
-				<td class=""><?php echo round($exp4,2) ?></td>
-				<td class=""><?php echo round($exp5,2) ?></td>
+				<td class=""><?php if(!isset($_SESSION['readonly'])){ ?><button type="button" class="btn btn-warning disabled"><i class="fa fa-pencil"></i></button><?php } ?> Interest expense on long-term debt</td>
+				<td class="">₱<?php echo number_format($exp1,2) ?></td>
+				<td class="">₱<?php echo number_format($exp2,2) ?></td>
+				<td class="">₱<?php echo number_format($exp3,2) ?></td>
+				<td class="">₱<?php echo number_format($exp4,2) ?></td>
+				<td class="">₱<?php echo number_format($exp5,2) ?></td>
 			</tr>
 			<tr>
-				<td class=""><button type="button" class="btn btn-warning update-oth" data-id=<?php echo $othid;?> data-oth="<?php echo $oth1; ?>" data-toggle="modal" data-target="#updateOTH"><i class="fa fa-pencil"></i></button> Other</td>
-				<td class=""><?php echo round($oth1,2) ?></td>
-				<td class=""><?php echo round($oth2,2) ?></td>
-				<td class=""><?php echo round($oth3,2) ?></td>
-				<td class=""><?php echo round($oth4,2) ?></td>
-				<td class=""><?php echo round($oth5,2) ?></td>
+				<td class=""><?php if(!isset($_SESSION['readonly'])){ ?><button type="button" class="btn btn-warning update-oth" data-id=<?php echo $othid;?> data-oth="<?php echo $oth1; ?>" data-toggle="modal" data-target="#updateOTH"><i class="fa fa-pencil"></i></button><?php } ?> Other</td>
+				<td class="">₱<?php echo number_format($oth1,2) ?></td>
+				<td class="">₱<?php echo number_format($oth2,2) ?></td>
+				<td class="">₱<?php echo number_format($oth3,2) ?></td>
+				<td class="">₱<?php echo number_format($oth4,2) ?></td>
+				<td class="">₱<?php echo number_format($oth5,2) ?></td>
 			</tr>
 			<?php include 'modal/updateExpenses.php';
 			$opexp1 = $sm1+$dep1+$ins1+$pt1+$prop1+$main1+$ut1+$ad1+$exp1+$oth1;
@@ -232,10 +232,10 @@
 		</tbody>
 		<tfoot>
 		<th>Total Operating Expenses</th>
-		<th><?php echo round($opexp1,2)  ?></th>
-		<th><?php echo round($opexp2,2)  ?></th>
-		<th><?php echo round($opexp3,2)  ?></th>
-		<th><?php echo round($opexp4,2)  ?></th>
-		<th><?php echo round($opexp5,2) ?></th>
+		<th>₱<?php echo number_format($opexp1,2)  ?></th>
+		<th>₱<?php echo number_format($opexp2,2)  ?></th>
+		<th>₱<?php echo number_format($opexp3,2)  ?></th>
+		<th>₱<?php echo number_format($opexp4,2)  ?></th>
+		<th>₱<?php echo number_format($opexp5,2) ?></th>
 		</tfoot>
 		</table>

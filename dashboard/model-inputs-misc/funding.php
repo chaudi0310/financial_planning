@@ -9,9 +9,9 @@
 	
 	
 		<table class="table table-condensed">
-		<thead style="background-color: blue; color:white">
+		<thead style="background-color: gray; color:white">
 			<tr>
-				<th>FUNDING <button type="button" class="btn btn-warning update-funding" data-toggle="modal" data-loan-amount="<?php echo $row['loan_amount'] ?>" data-anual-loan="<?php echo $row['anual_interest_rate']; ?>" data-target="#updateFunding" title="Update Funding"><i class="fa fa-pencil"></i></button></th>
+				<th>FUNDING <?php if(!isset($_SESSION['readonly'])){ ?><button type="button" class="btn btn-warning update-funding" data-toggle="modal" data-loan-amount="<?php echo $row['loan_amount'] ?>" data-loan-term = "<?php echo $row['term_of_loan'] ?>" data-anual-loan="<?php echo $row['anual_interest_rate']; ?>" data-target="#updateFunding" title="Update Funding"><i class="fa fa-pencil"></i></button> <?php } ?></th>
 				<?php include_once 'modal/updatefunding.php'; ?>
 				<th></th>
 				<th></th>
@@ -35,12 +35,12 @@
 			
 				<td class="">Loan Amount</td>
 				<td class=""></td>
-				<td align="right"class=""><?php echo $loan_amount;?></td>
+				<td align="right"class=""><input type="disabled" class="form-control" style="max-width:130px;" align="right" value="₱<?php echo number_format($loan_amount,2);?>"/></td>
 			</tr>
 			<tr style="background-color: #E9ECEF">
 				<td class="">Annual Interest Rate</td>
 				<td class=""></td>
-				<td align="right"class=""><?php echo $anual_interest_rate;?>%</td>
+				<td align="right"class=""><?php echo number_format($anual_interest_rate,2);?>%</td>
 			</tr>
 			<tr style="background-color: #E9ECEF">
 				<td class="">Term of Loan(number of months)</td>
@@ -55,12 +55,12 @@
 			<tr style="background-color: #E9ECEF">
 				<td class="">Payment</td>
 				<td class=""></td>
-				<td align="right"class=""><?php echo round($payment,2);?></td>
+				<td align="right"class="">₱<?php echo number_format($payment,2);?></td>
 			</tr>
 			<tr style="background-color: #E9ECEF">
 				<td class="">Total Amount Payable</td>
 				<td class=""></td>
-				<td align="right"class=""><?php echo round($total_amount_payable,2);?></td>
+				<td align="right"class="">₱<?php echo number_format($total_amount_payable,2);?></td>
 			</tr>
 		</tbody>
 		
