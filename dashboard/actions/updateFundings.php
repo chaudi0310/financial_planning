@@ -60,29 +60,35 @@ $total_amount_payable = $payment * 60;
 // Updating the funding
 $update = mysqli_query($db, "UPDATE funding SET loan_amount = '$loan_amount', anual_interest_rate = '$air', monthly_rate = '$monthly_rate', payment = '$payment', total_amount_payable = '$total_amount_payable', term_of_loan = '$loan_term'");
 
+// Gather all records in loan-payment-calculator table and getting all of its value
 $old_payment_calc_records = mysqli_fetch_all(mysqli_query($db, "SELECT id FROM `loan-payment-calculator`"));
 
+// Since ID was the only data gathered each multidimension array only has 0 index which is value for ID
 $old_payment_calc_records = array_column($old_payment_calc_records, '0');
 
 $scheduled_payment =$round_payment ;
+
+// Perform looping operation - Index was set to 0 as it is used in array gathering if record id exist in old records array
 for($i = 0; $i < $loan_term; $i++) {
 	$month_balance = $loan_amount;
 	$month_interest = $month_balance * $mratedeci;
 	$month_principal = $scheduled_payment - $month_interest;
 
 	if($old_payment_calc_records) { // Check if old_payment array is empty. Empty will return false
+		// Updates the record based on $old_payment_calc_records value un index[0]
 		mysqli_query($db, "UPDATE `loan-payment-calculator` SET balance = '$month_balance', scheduled_payment = '$payment', principal = '$month_principal', interest = '$month_interest' WHERE id = '$old_payment_calc_records[0]'");
 	} else {
+		// Will insert new record since $old_payment_calc_records is now empty
 		mysqli_query($db, "INSERT INTO `loan-payment-calculator` (`month`, `balance`, `scheduled_payment`, `principal`, `interest`) VALUES('".($i + 1)."', '$month_balance', '$scheduled_payment', '$month_principal', '$month_interest')");
 	}
 
-	array_shift($old_payment_calc_records);
+	array_shift($old_payment_calc_records); // removes the value of index[0] in the array
 
-	$loan_amount = $month_balance - $month_principal;
+	$loan_amount = $month_balance - $month_principal; // Compute the new loan_amount in the last minute of statement
 
 	$update = true;
 }
-$old_payment_calc_records = implode(',', $old_payment_calc_records);
+$old_payment_calc_records = implode(',', $old_payment_calc_records); // convert the array into string as comma delimited, to be used in WHERE IN condition in query
 
 mysqli_query($db, "DELETE FROM `loan-payment-calculator` WHERE id IN ($old_payment_calc_records)");
 //end of code for loan payment calculator
