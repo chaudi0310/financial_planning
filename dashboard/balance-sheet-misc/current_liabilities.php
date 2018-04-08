@@ -1,5 +1,5 @@
 <!--test-->
-		<?php 
+		<?php
 		include '../connection/dbConfig.php';
 		$ap = mysqli_query($db, "SELECT * FROM current_liabilities WHERE id = '1'");
 		$countap = mysqli_num_rows($ap);
@@ -33,9 +33,9 @@
 		}
 		?>
 	<!--stop test -->
-	
-	
-		
+
+
+
 		<table class="table table-condensed">
 		<thead>
 			<tr style="background-color: gray; color: white; border-top: 5px solid black;">
@@ -46,7 +46,7 @@
 				<th>Year3</th>
 				<th>Year4</th>
 				<th>Year5</th>
-				
+
 			</tr>
 		</thead>
 		<tbody>
@@ -95,7 +95,7 @@
 				<td class="" >₱<?php echo number_format($ocurrent_liab,2) ?></td>
 				<td class="" >₱<?php echo number_format($ocurrent_liab,2) ?></td>
 			</tr>
-			<?php 
+			<?php
 				$totalcurrentliabilities = $accounts_payable + $accrued_expenses + $notes_payable + $capital_leases + $ocurrent_liab;
 			?>
 			<tr style="background-color: gray">
@@ -107,7 +107,7 @@
 				<td class="" >₱<?php echo number_format($totalcurrentliabilities,2) ?></td>
 				<td class="" >₱<?php echo number_format($totalcurrentliabilities,2) ?></td>
 			</tr>
-			
+
 		</tbody>
 		<tfoot>
 		<th></th>
@@ -122,10 +122,11 @@
 		<?php
 		$selectlpcm1 = mysqli_query($db, "SELECT * FROM `loan-payment-calculator` WHERE month = '1'");
 		$countlpcm1 = mysqli_num_rows($selectlpcm1);
+		$loanyearfirst = $loanyearsecond = $loanyearthird = $loanyearfourth = $loanyearfifth = 0;
 		if($countlpcm1 > 0){
 			$row = mysqli_fetch_assoc($selectlpcm1);
 			$loaninitial = $row['balance'];
-		}		
+		}
 		$selectlpcm13 = mysqli_query($db, "SELECT * FROM `loan-payment-calculator` WHERE month = '13'");
 		$countlpcm13 = mysqli_num_rows($selectlpcm13);
 		if($countlpcm13 > 0){
@@ -169,7 +170,7 @@
 				<th align="center">Year3</th>
 				<th align="center">Year4</th>
 				<th align="center">Year5</th>
-				
+
 			</tr>
 		</thead>
 		<tbody>
@@ -193,7 +194,7 @@
 					$oltdyear3 = $row['year3'];
 					$oltdyear4 = $row['year4'];
 					$oltdyear5 = $row['year5'];
-					
+
 				}
 				$totaldebt_ib = $oltdinitial_balance + $loaninitial + $totalcurrentliabilities;
 				$totaldeb_y1 = $oltdyear1 + $loanyearfirst + $totalcurrentliabilities;
@@ -211,8 +212,8 @@
 				<td class="" >₱<?php echo number_format($oltdyear4,2) ?></td>
 				<td class="" >₱<?php echo number_format($oltdyear5,2) ?></td>
 			</tr>
-			
-			
+
+
 			<tr style="background-color: gray">
 				<td ><strong>Total Debt</strong></td>
 				<td class="" >₱<?php echo number_format($totaldebt_ib,2)?></td>
@@ -222,7 +223,7 @@
 				<td class="" >₱<?php echo number_format($totaldeb_y4,2)?></td>
 				<td class="" >₱<?php echo number_format($totaldeb_y5,2)?></td>
 			</tr>
-			
+
 		</tbody>
 		<tfoot>
 		<th></th>
@@ -233,4 +234,3 @@
 		<th></th>
 		</tfoot>
 		</table>
-		
