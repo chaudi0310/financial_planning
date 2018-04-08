@@ -1,14 +1,15 @@
 <!--test-->
-		<?php 
+		<?php
 		include '../connection/dbConfig.php';
 		$selectlpcm1 = mysqli_query($db, "SELECT * FROM `loan-payment-calculator` WHERE month = '1'");
 		$countlpcm1 = mysqli_num_rows($selectlpcm1);
 		if($countlpcm1 > 0){
 			$row = mysqli_fetch_assoc($selectlpcm1);
 			$loaninitial = $row['balance'];
-		}		
+		}
 		$selectlpcm13 = mysqli_query($db, "SELECT * FROM `loan-payment-calculator` WHERE month = '13'");
 		$countlpcm13 = mysqli_num_rows($selectlpcm13);
+		$loanyearfirst = $loanyearsecond = $loanyearthird = $loanyearfourth = $loanyearfifth = 0;
 		if($countlpcm13 > 0){
 			$row = mysqli_fetch_assoc($selectlpcm13);
 			$loanyearfirst = $row['balance'];
@@ -134,13 +135,13 @@
 		if($totalfinancingactivitiestotal < 0){
 			$totalfinancingcolor6 = "red";
 		}
-		
+
 		?>
-		
+
 	<!--stop test -->
-	
-	
-		
+
+
+
 		<table class="table table-condensed">
 		<thead>
 			<tr style="">
@@ -151,7 +152,7 @@
 				<th>Year4</th>
 				<th>Year5</th>
 				<th>Total</th>
-				
+
 			</tr>
 		</thead>
 		<tbody>
@@ -200,7 +201,7 @@
 				<td>₱<?php echo number_format($financingcashflowvalue,2) ?></td>
 				<td>₱<?php echo number_format($financingcashflowtotalvalue,2) ?></td>
 			</tr>
-			
+
 			<tr style="background-color: gray">
 				<td ><strong>Total financing activities</strong></td>
 				<td class="" align="" style="color: <?php echo $totalfinancingcolor1 ?>">₱<?php echo number_format($totalfinacningactivities1,2) ?></td>
@@ -210,7 +211,7 @@
 				<td class="" align="" style="color: <?php echo $totalfinancingcolor5 ?>">₱<?php echo number_format($totalfinacningactivities5,2) ?></td>
 				<td class="" align="" style="color: <?php echo $totalfinancingcolor6 ?>">₱<?php echo number_format($totalfinancingactivitiestotal,2) ?></td>
 			</tr>
-			
+
 		</tbody>
 		<tfoot>
 		<th></th>
@@ -221,4 +222,3 @@
 		<th></th>
 		</tfoot>
 		</table>
-		
