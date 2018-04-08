@@ -51,6 +51,15 @@ $below = 1 - $monthly_rateraise60;
 $payment = $above/$below;
 //amount payable formula
 //payment * 60
+
+function PMT($interest,$num_of_payments,$PV,$FV = 0.00, $Type = 0){
+	$xp=pow((1+$interest),$num_of_payments);
+	return
+		($PV* $interest*$xp/($xp-1)+$interest/($xp-1)*$FV)*
+		($Type==0 ? 1 : 1/($interest+1));
+}
+
+$payment = PMT($mratedeci, $loan_term, $loan_amount);
 $round_payment = round($payment, 2);
 $total_amount_payable = $payment * 60;
 
