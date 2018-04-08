@@ -1,7 +1,7 @@
 <?php
 session_start();
 if(isset($_SESSION['username'])){
-	
+
 } else {
 	?>
 	<script>
@@ -99,9 +99,9 @@ if(isset($_SESSION['username'])){
 			</li>
           </ul>
         </li>
-       
+
       </ul>
-      
+
       <ul class="navbar-nav ml-auto">
 	  <li class="nav-item">
           <a class="nav-link" data-toggle="modal" href="#historyModal" title="Recent Activity">
@@ -119,7 +119,7 @@ if(isset($_SESSION['username'])){
   <?php include_once 'modal/historyModal.php'; ?>
   <?php
   if(!isset($_SESSION['readonly'])){
-	include_once 'modal/readModal.php'; 
+	include_once 'modal/readModal.php';
   } else {
 	include_once 'modal/unreadModal.php';
   }
@@ -134,9 +134,9 @@ if(isset($_SESSION['username'])){
         <li class="breadcrumb-item active">Model Inputs</li>
       </ol>
       <!-- Icon Cards-->
-      
-      
-      
+
+
+
     </div>
     <!-- /.container-fluid-->
     <!-- /.content-wrapper-->
@@ -171,7 +171,7 @@ if(isset($_SESSION['username'])){
     </div>
 	<!--forcasted revenue-->
 	<?php include_once 'model-inputs-misc/forecasted-rev.php'; ?>
-		
+
 	<!--this table is for cost of good sold-->
 	<?php include_once 'model-inputs-misc/cost-of-goods.php'; ?>
 	<?php include_once 'model-inputs-misc/anual-maintenance.php'; ?>
@@ -185,8 +185,8 @@ if(isset($_SESSION['username'])){
 	<?php include_once 'model-inputs-misc/product_price_inc.php' ?>
 	<br>
 	<?php include_once 'model-inputs-misc/funding.php' ?>
-		
-		
+
+
 	</div>
     <!-- Bootstrap core JavaScript-->
     <script src="../vendor/jquery/jquery.min.js"></script>
@@ -204,6 +204,35 @@ if(isset($_SESSION['username'])){
     <script src="../js/sb-admin-charts.min.js"></script>
 	<!--this script is for model-input funding-->
 	<script>
+	// Funding Scripts
+	$(document).on("input change propertychange paste", "#loan-amount, #anual-interest, #loan_term", function(){
+		if(isNaN($(this).val())|| $(this).val() <= 0){
+			$(this).next('.invalid-feedback').show();
+			$('#form_funding').addClass("invalid");
+		} else {
+			$(this).next('.invalid-feedback').hide();
+			$('#form_funding').removeClass("invalid");
+		}
+	});
+
+	$("#submit").on('click', function(e){
+		e.preventDefault();
+		var parent = $(this).parents('#form_funding');
+
+		$("input").each(function(index){
+			$(this).change();
+		});
+
+		if($('#form_funding').hasClass('invalid')){
+			alert('There are still incorrect inputs you need to fix.');
+			return false;
+		} else {
+			$("#confirmSubmit").click();
+		}
+
+
+	});
+
 	$(document).on("click", ".update-funding", function(){
 			var loanamount = $(this).data('loan-amount');
 			var anual_interest = $(this).data('anual-loan');
@@ -217,8 +246,8 @@ if(isset($_SESSION['username'])){
 	<script>
 	$(document).on("click", ".update-inflation", function(){
 			var inflationrate = $(this).data('inflation-rate');
-			
-			
+
+
 			$(".modal-body #inflationrate").val(inflationrate);
 });
 	</script>
@@ -226,15 +255,15 @@ if(isset($_SESSION['username'])){
 	<script>
 	$(document).on("click", ".update-pincrease", function(){
 			var pricerate = $(this).data('price-rate');
-			
-			
+
+
 			$(".modal-body #pincrease").val(pricerate);
 });
 	</script>
-	
-	
+
+
   </div>
 </body>
 
-	
+
 </html>
