@@ -3,7 +3,7 @@ session_start();
 include 'connection/dbConfig.php';
 if(isset($_POST['submit'])){
 	$username = $_POST['username'];
-	$password = $_POST['password'];
+	$password = hash('sha256', $_POST['password']);
 	$login = mysqli_num_rows(mysqli_query($db, "SELECT * FROM accounts WHERE username = '$username' AND password = '$password'"));
 		if($login > 0){
 			$_SESSION['username'] = $username;
