@@ -476,3 +476,23 @@ footer.sticky-footer {
     width: calc(100% - 55px);
   }
 }
+
+/* width */
+.navbar-sidenav::-webkit-scrollbar {
+    width: 5px;
+}
+
+/* Track */
+.navbar-sidenav::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+.navbar-sidenav::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+/* Handle on hover */
+.navbar-sidenav::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}

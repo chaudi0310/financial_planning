@@ -1,7 +1,7 @@
 <?php
 session_start();
 if(isset($_SESSION['username'])){
-	
+
 } else {
 	?>
 	<script>
@@ -41,94 +41,14 @@ if(isset($_SESSION['action'])){
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
-  <!-- Navigation-->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-    <a class="navbar-brand" href="index.php">Financial Planning System</a>
-    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarResponsive">
-      <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
-	  <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Model Inputs">
-          <a class="nav-link" href="index.php">
-            <i class="fa fa-fw fa-dashboard"></i>
-            <span class="nav-link-text">Dashboard</span>
-          </a>
-        </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Model Inputs">
-          <a class="nav-link" href="model-inputs.php">
-            <i class="fa fa-fw fa-bar-chart"></i>
-            <span class="nav-link-text">Model Inputs</span>
-          </a>
-        </li>
-		<li class="nav-item active" data-toggle="tooltip" data-placement="right" title="Profits and Loss">
-          <a class="nav-link" href="profits-and-loss.php">
-            <i class="fa fa-fw fa-area-chart"></i>
-            <span class="nav-link-text">Profits and Loss</span>
-          </a>
-        </li>
-		<!-- balance sheet -->
-		<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Balance Sheet">
-          <a class="nav-link" href="balance-sheet.php">
-            <i class="fa fa-fw fa-list-alt"></i>
-            <span class="nav-link-text">Balance Sheet</span>
-          </a>
-        </li>
-		<!--cash flow -->
-		<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Cash Flow">
-          <a class="nav-link" href="cash-flow.php">
-            <i class="fa fa-fw fa-stack-overflow"></i>
-            <span class="nav-link-text">Cash Flow</span>
-          </a>
-        </li>
-		<!--loan payment calculator-->
-		<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Loan Payment Calculator">
-          <a class="nav-link" href="loan-payment.php">
-            <i class="fa fa-fw fa-calculator"></i>
-            <span class="nav-link-text">Loan Payment Calculator</span>
-          </a>
-        </li>
-		<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Settings">
-          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseSettings" data-parent="#exampleAccordion">
-            <i class="fa fa-fw fa-wrench"></i>
-            <span class="nav-link-text">Settings</span>
-          </a>
-          <ul class="sidenav-second-level collapse" id="collapseSettings">
-            <li>
-              <a data-toggle="modal" href="#userModal">Change Username</a>
-			</li>
-            <li>
-              <a data-toggle="modal" href="#passModal">Change Password</a>
-            </li>
-			<li>
-              <a href="#">Backup Database</a>
-            </li>
-			<li>
-			  <a data-toggle="modal" href="#readModal">Read-only Mode <?php if(isset($_SESSION['readonly'])){ ?><i style="color: green"class="fa fa-circle"></i> <?php } ?></a>
-			</li>
-          </ul>
-        </li>
-       
-      </ul>
-      
-      <ul class="navbar-nav ml-auto">
-	  <li class="nav-item">
-          <a class="nav-link" data-toggle="modal" href="#historyModal" title="Recent Activity">
-            <i class="fa fa-fw fa-history"></i></a>
-       </li>
-        <li class="nav-item">
-          <a class="nav-link" href="logout.php">
-            <i class="fa fa-fw fa-sign-out"></i>Logout</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
+	<?php include_once 'navigation.php'; ?>
+	<?php include_once 'modal/restoreDB.php'; ?>
   <?php include_once 'modal/password.php'; ?>
   <?php include_once 'modal/username.php'; ?>
   <?php include_once 'modal/historyModal.php'; ?>
   <?php
   if(!isset($_SESSION['readonly'])){
-	include_once 'modal/readModal.php'; 
+	include_once 'modal/readModal.php';
   } else {
 	include_once 'modal/unreadModal.php';
   }
@@ -151,7 +71,7 @@ if(isset($_SESSION['action'])){
 	  <?php include_once 'profits-and-loss-misc/expense.php'; ?>
 	  <?php include_once 'profits-and-loss-misc/recurring.php'; ?>
 	  </div>
-      
+
     </div>
     <!-- /.container-fluid-->
     <!-- /.content-wrapper-->
@@ -204,7 +124,7 @@ if(isset($_SESSION['action'])){
 	$(document).on("click", ".update-sm", function(){
 			var sm = $(this).data('sm');
 			var id = $(this).data('id');
-			
+
 			$(".modal-body #sm").val(sm);
 			$(".modal-body #id").val(id);
 });
@@ -213,7 +133,7 @@ if(isset($_SESSION['action'])){
 	$(document).on("click", ".update-ins", function(){
 			var ins = $(this).data('ins');
 			var id = $(this).data('id');
-			
+
 			$(".modal-body #ins").val(ins);
 			$(".modal-body #id").val(id);
 });
@@ -222,7 +142,7 @@ if(isset($_SESSION['action'])){
 	$(document).on("click", ".update-pt", function(){
 			var pt = $(this).data('pt');
 			var id = $(this).data('id');
-			
+
 			$(".modal-body #pt").val(pt);
 			$(".modal-body #id").val(id);
 });
@@ -231,7 +151,7 @@ if(isset($_SESSION['action'])){
 	$(document).on("click", ".update-prop", function(){
 			var prop = $(this).data('prop');
 			var id = $(this).data('id');
-			
+
 			$(".modal-body #prop").val(prop);
 			$(".modal-body #id").val(id);
 });
@@ -240,7 +160,7 @@ if(isset($_SESSION['action'])){
 	$(document).on("click", ".update-ut", function(){
 			var ut = $(this).data('ut');
 			var id = $(this).data('id');
-			
+
 			$(".modal-body #ut").val(ut);
 			$(".modal-body #id").val(id);
 });
@@ -249,7 +169,7 @@ if(isset($_SESSION['action'])){
 	$(document).on("click", ".update-ad", function(){
 			var ad = $(this).data('ad');
 			var id = $(this).data('id');
-			
+
 			$(".modal-body #ad").val(ad);
 			$(".modal-body #id").val(id);
 });
@@ -258,7 +178,7 @@ if(isset($_SESSION['action'])){
 	$(document).on("click", ".update-oth", function(){
 			var oth = $(this).data('oth');
 			var id = $(this).data('id');
-			
+
 			$(".modal-body #oth").val(oth);
 			$(".modal-body #id").val(id);
 });
@@ -271,7 +191,7 @@ if(isset($_SESSION['action'])){
 			var y4 = $(this).data('y4');
 			var y5 = $(this).data('y5');
 			var id = $(this).data('id');
-			
+
 			$(".modal-body #uey1").val(y1);
 			$(".modal-body #uey2").val(y2);
 			$(".modal-body #uey3").val(y3);
@@ -288,7 +208,7 @@ if(isset($_SESSION['action'])){
 			var yy4 = $(this).data('yy4');
 			var yy5 = $(this).data('yy5');
 			var id = $(this).data('id');
-			
+
 			$(".modal-body #oey1").val(yy1);
 			$(".modal-body #oey2").val(yy2);
 			$(".modal-body #oey3").val(yy3);
@@ -297,5 +217,5 @@ if(isset($_SESSION['action'])){
 			$(".modal-body #id").val(id);
 });
 	</script>
-	
+
 </html>

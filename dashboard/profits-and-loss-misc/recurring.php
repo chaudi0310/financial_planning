@@ -1,5 +1,5 @@
 <!--test-->
-		<?php 
+		<?php
 			include '../connection/dbConfig.php';
 			$retrieve = mysqli_query($db, "SELECT * FROM recurring_expenses WHERE id = '1'");
 			$count = mysqli_num_rows($retrieve);
@@ -20,23 +20,23 @@
 			$otherexpensey1 = mysqli_query($db, "SELECT SUM(year1) as total_sum1 FROM other_expenses");
 			$gety1 = mysqli_fetch_assoc($otherexpensey1);
 			$oe1 = $gety1['total_sum1'];
-			
+
 			$otherexpensey2 = mysqli_query($db, "SELECT SUM(year2) as total_sum2 FROM other_expenses");
 			$gety2 = mysqli_fetch_assoc($otherexpensey2);
 			$oe2 = $gety2['total_sum2'];
-			
+
 			$otherexpensey3 = mysqli_query($db, "SELECT SUM(year2) as total_sum3 FROM other_expenses");
 			$gety3 = mysqli_fetch_assoc($otherexpensey3);
 			$oe3 = $gety3['total_sum3'];
-			
+
 			$otherexpensey24 = mysqli_query($db, "SELECT SUM(year2) as total_sum4 FROM other_expenses");
 			$gety4 = mysqli_fetch_assoc($otherexpensey24);
 			$oe4 = $gety4['total_sum4'];
-			
+
 			$otherexpensey5 = mysqli_query($db, "SELECT SUM(year2) as total_sum5 FROM other_expenses");
 			$gety5 = mysqli_fetch_assoc($otherexpensey5);
 			$oe5 = $gety5['total_sum5'];
-			
+
 			} else {
 				$oe1 = '0';
 				$oe2 = '0';
@@ -44,11 +44,11 @@
 				$oe4 = '0';
 				$oe5 = '0';
 			}
-			
+
 		?>
 	<!--stop test -->
-	
-	
+
+
 		<h2></h2>
 		<table class="table table-condensed">
 		<thead>
@@ -59,7 +59,7 @@
 				<th>Year3</th>
 				<th>Year4</th>
 				<th>Year5</th>
-				
+
 			</tr>
 		</thead>
 		<tbody>
@@ -80,7 +80,7 @@
 				<td class="">₱<?php echo number_format($oe5,2) ?></td>
 			</tr>
 			<?php include 'modal/non-recurring.php';
-					include 'modal/otherexpense.php'; 
+					include 'modal/otherexpense.php';
 			$totalnre = mysqli_query($db, "SELECT * FROM total_non_rec_ex WHERE id = '1'");
 			$totalcount = mysqli_num_rows($totalnre);
 			if($totalcount > 0){
@@ -91,13 +91,13 @@
 				$ty4 = $row['y4'];
 				$ty5 = $row['y5'];
 			}
-			
+
 			?>
-			
-			
+
+
 		</tbody>
 		<tfoot>
-		
+
 		<th>Total Non-Recurring Expenses</th>
 		<th>₱<?php echo number_format($ty1,2);?></th>
 		<th>₱<?php echo number_format($ty2,2); ?></th>
@@ -106,7 +106,7 @@
 		<th>₱<?php echo number_format($ty5,2) ;?></th>
 		</tfoot>
 		</table>
-		
+
 		<h3>Total Expenses</h3>
 	<table class="table table-condensed" style="border: 5px solid black">
 	<?php
@@ -125,14 +125,14 @@
 			<th>Year 5</th>
 		</tr>
 		<tr align="center">
-			
+
 			<th>₱<?php echo number_format($expense1,2); ?></th>
 			<th>₱<?php echo number_format($expense2,2); ?></th>
 			<th>₱<?php echo number_format($expense3,2); ?></th>
 			<th>₱<?php echo number_format($expense4,2); ?></th>
 			<th>₱<?php echo number_format($expense5,2); ?></th>
 		</tr>
-		
+
 	</thead>
 </table>
 
@@ -145,10 +145,10 @@
 				<th>Year3</th>
 				<th>Year4</th>
 				<th>Year5</th>
-				
+
 			</tr>
 		</thead>
-		<?php 
+		<?php
 			$getanualtax = mysqli_query($db, "SELECT * FROM tax WHERE id = '1'");
 			$cgetanualtax = mysqli_num_rows($getanualtax);
 			if($cgetanualtax > 0){
@@ -159,7 +159,7 @@
 			$it3 = ($income3 - $expense3) * $taxrate;
 			$it4 = ($income4 - $expense4) * $taxrate;
 			$it5 = ($income5 - $expense5) * $taxrate;
-			}			
+			}
 			?>
 		<tbody>
 			<tr>
@@ -196,13 +196,13 @@
 				<td class="">₱<?php echo number_format($otyear4,2); ?></td>
 				<td class="">₱<?php echo number_format($otyear5,2); ?></td>
 			</tr>
-			
-			
-			
-			
+
+
+
+
 		</tbody>
 		<tfoot>
-		
+
 		<th>Total Taxes</th>
 		<th>₱<?php echo number_format($totaltax1,2) ?></th>
 		<th>₱<?php echo number_format($totaltax2,2) ?></th>
@@ -214,8 +214,8 @@
 		<br>
 		<br>
 
-		
-		<h3>Net Profit</h3>
+
+		<h3 id="net-profit">Net Profit</h3>
 	<table class="table table-condensed" style="border: 5px solid black">
 	<?php
 		$netprof1 = $income1 - $expense1 - $totaltax1;
@@ -224,7 +224,7 @@
 		$netprof4 = $income4 - $expense4 - $totaltax4;
 		$netprof5 = $income5 - $expense5 - $totaltax5;
 		$update_retained = mysqli_query($db, "UPDATE retained_earnings SET year1 = '$netprof1', year2 = '$netprof2', year3 = '$netprof3', year4 = '$netprof4', year5 = '$netprof5' WHERE id = '1'");
-		
+
 	?>
 	<thead>
 		<tr style="background-color: gray; color: white;" align="center">
@@ -235,15 +235,13 @@
 			<th>Year 5</th>
 		</tr>
 		<tr align="center">
-			
+
 			<th>₱<?php echo number_format($netprof1,2); ?></th>
 			<th>₱<?php echo number_format($netprof2,2); ?></th>
 			<th>₱<?php echo number_format($netprof3,2); ?></th>
 			<th>₱<?php echo number_format($netprof4,2); ?></th>
 			<th>₱<?php echo number_format($netprof5,2); ?></th>
 		</tr>
-		
+
 	</thead>
 </table>
-
-		

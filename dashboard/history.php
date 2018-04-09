@@ -19,91 +19,8 @@
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
-  <!-- Navigation-->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-    <a class="navbar-brand" href="index.php">Financial Planning System</a>
-    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarResponsive">
-      <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
-	  <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Model Inputs">
-          <a class="nav-link" href="index.php">
-            <i class="fa fa-fw fa-dashboard"></i>
-            <span class="nav-link-text">Dashboard</span>
-          </a>
-        </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Model Inputs">
-          <a class="nav-link" href="model-inputs.php">
-            <i class="fa fa-fw fa-bar-chart"></i>
-            <span class="nav-link-text">Model Inputs</span>
-          </a>
-        </li>
-		<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Profits and Loss">
-          <a class="nav-link" href="profits-and-loss.php">
-            <i class="fa fa-fw fa-area-chart"></i>
-            <span class="nav-link-text">Profits and Loss</span>
-          </a>
-        </li>
-		<!-- balance sheet -->
-		<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Balance Sheet">
-          <a class="nav-link" href="balance-sheet.php">
-            <i class="fa fa-fw fa-list-alt"></i>
-            <span class="nav-link-text">Balance Sheet</span>
-          </a>
-        </li>
-		<!--cash flow -->
-		<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Cash Flow">
-          <a class="nav-link" href="cash-flow.php">
-            <i class="fa fa-fw fa-stack-overflow"></i>
-            <span class="nav-link-text">Cash Flow</span>
-          </a>
-        </li>
-		<!--loan payment calculator-->
-		<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Loan Payment Calculator">
-          <a class="nav-link" href="loan-payment.php">
-            <i class="fa fa-fw fa-calculator"></i>
-            <span class="nav-link-text">Loan Payment Calculator</span>
-          </a>
-        </li>
-       
-      </ul>
-      
-      <ul class="navbar-nav ml-auto">
-	  <!--Recent Activity-->
-	  <li class="nav-item dropdown" >
-          <a class="nav-link dropdown-toggle mr-lg-2" id="messagesDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fa fa-fw fa-bell"></i>
-            <span class="d-lg-none">Messages
-              <span class="badge badge-pill badge-primary">12 New</span>
-            </span>
-            <span class="indicator text-primary d-none d-lg-block">
-              <i class="fa fa-fw fa-circle"></i>
-            </span>
-          </a>
-          <div class="dropdown-menu" aria-labelledby="messagesDropdown" style="max-width:10px;">
-            <h6 class="dropdown-header">New Messages:</h6>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">
-              <strong>Status Update</strong>
-              <span class="small float-right text-muted">11:21 AM</span>
-              <div class="dropdown-message small">Hey there! This new version of SB Admin is pretty awesome! These messages clip off when they reach the end of the box so they don't overflow over to the sides!</div>
-            </a>
-            
-            
-            
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item small" href="#">View all messages</a>
-          </div>
-        </li>
-		</recent>
-         <li class="nav-item">
-          <a class="nav-link" href="logout.php">
-            <i class="fa fa-fw fa-sign-out"></i>Logout</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
+  <?php include_once 'navigation.php'; ?>
+  <?php include_once 'modal/restoreDB.php'; ?>
   <div class="content-wrapper">
     <div class="container-fluid">
       <!-- Breadcrumbs-->
@@ -114,10 +31,10 @@
         <li class="breadcrumb-item active">Recent History</li>
       </ol>
 	  <?php include_once 'history-misc/recenthistory.php'; ?>
-      
-      
-      
-    
+
+
+
+
     </div>
     <!-- /.container-fluid-->
     <!-- /.content-wrapper-->

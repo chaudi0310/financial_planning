@@ -4,8 +4,11 @@ if(isset($_SESSION['username'])){
 	require_once('../connection/dbConfig.php');
 	$funding = mysqli_fetch_array(mysqli_query($db, "SELECT * FROM funding WHERE id = 1"));
 	$products = mysqli_fetch_all(mysqli_query($db, 'SELECT * FROM product'));
-	$ending_cash_balance = mysqli_fetch_array(mysqli_query($db, "SELECT * FROM ending_cash_balance WHERE id = 1"));
-	$asset_depreciation = mysqli_fetch_array(mysqli_query($db, "SELECT * FROM asset_depreciation"));
+	$ending_cash_balance = mysqli_fetch_assoc(mysqli_query($db, "SELECT year1, year2, year3, year4, year5 FROM ending_cash_balance WHERE id = 1"));
+	$current_assets = mysqli_fetch_assoc(mysqli_query($db, "SELECT SUM(balance) AS total FROM current_assets"));
+	$current_liabilities = mysqli_fetch_assoc(mysqli_query($db, "SELECT SUM(initial_balance) AS total FROM current_liabilities"));
+	$netprofit = mysqli_fetch_assoc(mysqli_query($db, "SELECT year1, year2, year3, year4, year5 FROM retained_earnings WHERE id = 1"));
+	$netprofit = array_sum($netprofit);
 } else {
 	?>
 	<script>
@@ -37,92 +40,8 @@ if(isset($_SESSION['username'])){
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
-  <!-- Navigation-->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-    <a class="navbar-brand" href="index.php">Financial Planning System</a>
-    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarResponsive">
-      <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
-	  <li class="nav-item active" data-toggle="tooltip" data-placement="right" title="Model Inputs">
-          <a class="nav-link" href="index.php">
-            <i class="fa fa-fw fa-dashboard"></i>
-            <span class="nav-link-text">Dashboard</span>
-          </a>
-        </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Model Inputs">
-          <a class="nav-link" href="model-inputs.php">
-            <i class="fa fa-fw fa-bar-chart"></i>
-            <span class="nav-link-text">Model Inputs</span>
-          </a>
-        </li>
-		<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Profits and Loss">
-          <a class="nav-link" href="profits-and-loss.php">
-            <i class="fa fa-fw fa-area-chart"></i>
-            <span class="nav-link-text">Profits and Loss</span>
-          </a>
-        </li>
-		<!-- balance sheet -->
-		<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Balance Sheet">
-          <a class="nav-link" href="balance-sheet.php">
-            <i class="fa fa-fw fa-list-alt"></i>
-            <span class="nav-link-text">Balance Sheet</span>
-          </a>
-        </li>
-		<!--cash flow -->
-		<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Cash Flow">
-          <a class="nav-link" href="cash-flow.php">
-            <i class="fa fa-fw fa-stack-overflow"></i>
-            <span class="nav-link-text">Cash Flow</span>
-          </a>
-        </li>
-		<!--loan payment calculator-->
-		<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Loan Payment Calculator">
-          <a class="nav-link" href="loan-payment.php">
-            <i class="fa fa-fw fa-calculator"></i>
-            <span class="nav-link-text">Loan Payment Calculator</span>
-          </a>
-        </li>
-		<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Settings">
-          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseSettings" data-parent="#exampleAccordion">
-            <i class="fa fa-fw fa-wrench"></i>
-            <span class="nav-link-text">Settings</span>
-          </a>
-          <ul class="sidenav-second-level collapse" id="collapseSettings">
-            <li>
-              <a data-toggle="modal" href="#userModal">Change Username</a>
-			</li>
-            <li>
-              <a data-toggle="modal" href="#passModal">Change Password</a>
-            </li>
-			<li>
-              <a href="#">Backup Database</a>
-            </li>
-			<li>
-			  <a data-toggle="modal" href="#readModal">Read-only Mode <?php if(isset($_SESSION['readonly'])){ ?><i style="color: green"class="fa fa-circle"></i> <?php } ?></a>
-			</li>
-          </ul>
-        </li>
-
-      </ul>
-
-      <ul class="navbar-nav ml-auto">
-	  <!--Recent Activity-->
-
-	  <li class="nav-item">
-          <a class="nav-link" data-toggle="modal" href="#historyModal" title="Recent Activity">
-            <i class="fa fa-fw fa-history"></i></a>
-        </li>
-
-
-         <li class="nav-item">
-          <a class="nav-link" href="logout.php">
-            <i class="fa fa-fw fa-sign-out"></i>Logout</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
+	<?php include_once 'navigation.php'; ?>
+	<?php include_once 'modal/restoreDB.php'; ?>
   <?php include_once 'modal/password.php'; ?>
   <?php include_once 'modal/username.php'; ?>
   <?php include_once 'modal/historyModal.php'; ?>
@@ -151,9 +70,9 @@ if(isset($_SESSION['username'])){
               <div class="card-body-icon">
                 <i class="fa fa-fw fa-comments"></i>
               </div>
-              <div class="mr-5"><?= count($products) ?> Products</div>
+              <div class="mr-5">₱ <?= number_format(round($netprofit, 2), 2) ?> Net Profit</div>
             </div>
-            <a class="card-footer text-white clearfix small z-1" href="#">
+            <a class="card-footer text-white clearfix small z-1" href="profits-and-loss.php?#net-profit">
               <span class="float-left">View Details</span>
               <span class="float-right">
                 <i class="fa fa-angle-right"></i>
@@ -167,9 +86,9 @@ if(isset($_SESSION['username'])){
               <div class="card-body-icon">
                 <i class="fa fa-fw fa-list"></i>
               </div>
-              <div class="mr-5"><?= $asset_depreciation['num_of_years'] ?> Years Assets Depreciations</div>
+              <div class="mr-5">₱ <?= number_format(round(array_sum($ending_cash_balance), 2), 2)?> Ending Cash Balance</div>
             </div>
-            <a class="card-footer text-white clearfix small z-1" href="#">
+            <a class="card-footer text-white clearfix small z-1" href="balance-sheet.php?#assets">
               <span class="float-left">View Details</span>
               <span class="float-right">
                 <i class="fa fa-angle-right"></i>
@@ -183,9 +102,9 @@ if(isset($_SESSION['username'])){
               <div class="card-body-icon">
                 <i class="fa fa-fw fa-shopping-cart"></i>
               </div>
-              <div class="mr-5"><?= $funding['loan_amount'] ?> Loan Amount</div>
+              <div class="mr-5">₱ <?= number_format(round($current_assets['total'], 2), 2) ?> Current Total Assets</div>
             </div>
-            <a class="card-footer text-white clearfix small z-1" href="#">
+            <a class="card-footer text-white clearfix small z-1" href="balance-sheet.php?#assets">
               <span class="float-left">View Details</span>
               <span class="float-right">
                 <i class="fa fa-angle-right"></i>
@@ -199,9 +118,9 @@ if(isset($_SESSION['username'])){
               <div class="card-body-icon">
                 <i class="fa fa-fw fa-support"></i>
               </div>
-              <div class="mr-5"><?= $funding['anual_interest_rate'] ?>% Loan Interest Rate</div>
+              <div class="mr-5">₱ <?= number_format(round($current_liabilities['total'], 2), 2) ?> Current Total Liabilities</div>
             </div>
-            <a class="card-footer text-white clearfix small z-1" href="#">
+            <a class="card-footer text-white clearfix small z-1" href="balance-sheet.php?#liabilities">
               <span class="float-left">View Details</span>
               <span class="float-right">
                 <i class="fa fa-angle-right"></i>
