@@ -193,7 +193,12 @@ if(isset($_SESSION['username'])){
     <script src="../js/sb-admin.min.js"></script>
     <!-- Custom scripts for this page-->
     <script src="../js/sb-admin-datatables.min.js"></script>
+		<script src="../vendor/popper.js/popper.min.js"></script>
 		<script>
+		$(function(){
+			$('[data-toggle="tooltip"]').tooltip();
+		})
+
 		// -- Bar Chart Example
 		var ctx = document.getElementById("myBarChart");
 		var myBarChart = new Chart(ctx, {

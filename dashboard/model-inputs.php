@@ -121,9 +121,15 @@ if(isset($_SESSION['username'])){
     <!-- Custom scripts for this page-->
     <script src="../js/sb-admin-datatables.min.js"></script>
     <script src="../js/sb-admin-charts.min.js"></script>
+		<script src="../vendor/popper.js/popper.min.js"></script> <!-- Needed for popover -->
 	<!--this script is for model-input funding-->
 	<script>
 	// Funding Scripts
+
+	$(function(){
+		$('[data-toggle="popover"]').popover(); // Instantiate popover
+	});
+
 	$(document).on("input change propertychange paste", "#loan-amount, #anual-interest, #loan_term", function(){
 		if(isNaN($(this).val())|| $(this).val() <= 0){
 			$(this).next('.invalid-feedback').show();
