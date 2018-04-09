@@ -1,7 +1,11 @@
 <?php
 session_start();
 if(isset($_SESSION['username'])){
-	
+	require_once('../connection/dbConfig.php');
+	$funding = mysqli_fetch_array(mysqli_query($db, "SELECT * FROM funding WHERE id = 1"));
+	$products = mysqli_fetch_all(mysqli_query($db, 'SELECT * FROM product'));
+	$ending_cash_balance = mysqli_fetch_array(mysqli_query($db, "SELECT * FROM ending_cash_balance WHERE id = 1"));
+	$asset_depreciation = mysqli_fetch_array(mysqli_query($db, "SELECT * FROM asset_depreciation"));
 } else {
 	?>
 	<script>
@@ -100,18 +104,18 @@ if(isset($_SESSION['username'])){
 			</li>
           </ul>
         </li>
-       
+
       </ul>
-      
+
       <ul class="navbar-nav ml-auto">
 	  <!--Recent Activity-->
-	  
+
 	  <li class="nav-item">
           <a class="nav-link" data-toggle="modal" href="#historyModal" title="Recent Activity">
             <i class="fa fa-fw fa-history"></i></a>
         </li>
-		
-		
+
+
          <li class="nav-item">
           <a class="nav-link" href="logout.php">
             <i class="fa fa-fw fa-sign-out"></i>Logout</a>
@@ -124,12 +128,12 @@ if(isset($_SESSION['username'])){
   <?php include_once 'modal/historyModal.php'; ?>
   <?php
   if(!isset($_SESSION['readonly'])){
-	include_once 'modal/readModal.php'; 
+	include_once 'modal/readModal.php';
   } else {
 	include_once 'modal/unreadModal.php';
   }
   ?>
-  
+
   <div class="content-wrapper">
     <div class="container-fluid">
       <!-- Breadcrumbs-->
@@ -147,7 +151,7 @@ if(isset($_SESSION['username'])){
               <div class="card-body-icon">
                 <i class="fa fa-fw fa-comments"></i>
               </div>
-              <div class="mr-5">20 Products</div>
+              <div class="mr-5"><?= count($products) ?> Products</div>
             </div>
             <a class="card-footer text-white clearfix small z-1" href="#">
               <span class="float-left">View Details</span>
@@ -163,7 +167,7 @@ if(isset($_SESSION['username'])){
               <div class="card-body-icon">
                 <i class="fa fa-fw fa-list"></i>
               </div>
-              <div class="mr-5">5 Years Assets Depreciations</div>
+              <div class="mr-5"><?= $asset_depreciation['num_of_years'] ?> Years Assets Depreciations</div>
             </div>
             <a class="card-footer text-white clearfix small z-1" href="#">
               <span class="float-left">View Details</span>
@@ -179,7 +183,7 @@ if(isset($_SESSION['username'])){
               <div class="card-body-icon">
                 <i class="fa fa-fw fa-shopping-cart"></i>
               </div>
-              <div class="mr-5">50000 Loan Amount</div>
+              <div class="mr-5"><?= $funding['loan_amount'] ?> Loan Amount</div>
             </div>
             <a class="card-footer text-white clearfix small z-1" href="#">
               <span class="float-left">View Details</span>
@@ -195,7 +199,7 @@ if(isset($_SESSION['username'])){
               <div class="card-body-icon">
                 <i class="fa fa-fw fa-support"></i>
               </div>
-              <div class="mr-5">5% Loan Interest Rate</div>
+              <div class="mr-5"><?= $funding['anual_interest_rate'] ?>% Loan Interest Rate</div>
             </div>
             <a class="card-footer text-white clearfix small z-1" href="#">
               <span class="float-left">View Details</span>
@@ -219,11 +223,11 @@ if(isset($_SESSION['username'])){
             <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
           </div>
           <!-- Card Columns Example Social Feed-->
-         
-         
+
+
           <!-- /Card Columns-->
         </div>
-        
+
       </div>
       <div class="card mb-3">
         <div class="card-header">
@@ -231,11 +235,11 @@ if(isset($_SESSION['username'])){
         <div class="card-body">
           <canvas id="myAreaChart" width="100%" height="30"></canvas>
         </div>
-        
+
       </div>
-	  
-      
-    
+
+
+
     </div>
     <!-- /.container-fluid-->
     <!-- /.content-wrapper-->
@@ -281,7 +285,55 @@ if(isset($_SESSION['username'])){
     <script src="../js/sb-admin.min.js"></script>
     <!-- Custom scripts for this page-->
     <script src="../js/sb-admin-datatables.min.js"></script>
-    <script src="../js/sb-admin-charts.min.js"></script>
+    <script src="../js/sb-admin-charts.js"></script>
+		<script>
+		// -- Bar Chart Example
+		var ctx = document.getElementById("myBarChart");
+		var myBarChart = new Chart(ctx, {
+			type: 'bar',
+			data: {
+				labels: ["Year 1", "Year 2", "Year 3", "Year 4", "Year 5"],
+				datasets: [{
+					label: "Revenue",
+					backgroundColor: "rgba(2,117,216,1)",
+					borderColor: "rgba(2,117,216,1)",
+					data: [<?= $ending_cash_balance['year1'] ?>,
+					<?= $ending_cash_balance['year2'] ?>,
+					<?= $ending_cash_balance['year3'] ?>,
+					<?= $ending_cash_balance['year4'] ?>,
+					<?= $ending_cash_balance['year5'] ?>],
+				}],
+			},
+			options: {
+				scales: {
+					xAxes: [{
+						time: {
+							unit: 'month'
+						},
+						gridLines: {
+							display: false
+						},
+						ticks: {
+							maxTicksLimit: 6
+						}
+					}],
+					yAxes: [{
+						ticks: {
+							min: 0,
+							max: <?= round(max($ending_cash_balance) * 1.25, -1 * (strlen(floor(max($ending_cash_balance) * 1.25)) - 2)) ?>,
+							maxTicksLimit: 5
+						},
+						gridLines: {
+							display: true
+						}
+					}],
+				},
+				legend: {
+					display: false
+				}
+			}
+		});
+		</script>
   </div>
 </body>
 
